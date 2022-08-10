@@ -158,7 +158,7 @@ const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: black;
+  color: white;
   margin: 6rem 2.3rem 0 2.3rem;
 
   p {
@@ -176,7 +176,7 @@ const Content = styled.div`
 `;
 
 const Button = styled(Link)`
-  color: black;
+  color: white;
   font-family: "Gilroy-Bold", sans-serif;
   text-decoration: none;
   background-color: #000000;

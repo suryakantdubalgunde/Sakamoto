@@ -74,7 +74,7 @@ const Shadow = styled.div`
 `;
 
 const Button = styled.button`
-  color: black;
+  color: white;
   font-family: "Gilroy-Bold", sans-serif;
   background-color: #000000;
   outline: none;

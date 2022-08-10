@@ -95,7 +95,7 @@ function AnimeDetails() {
                   </p>
                   {width <= 600 && expanded && (
                     <p>
-                      <span>Plot Summery: </span>
+                      <span>Plot Summary: </span>
                       {animeDetails[0].gogoResponse.description.replace(
                         "Plot Summary:",
                         ""
@@ -107,7 +107,7 @@ function AnimeDetails() {
                   )}
                   {width <= 600 && !expanded && (
                     <p>
-                      <span>Plot Summery: </span>
+                      <span>Plot Summary: </span>
                       {animeDetails[0].gogoResponse.description
                         .replace("Plot Summary:", "")
                         .substring(0, 200) + "... "}
@@ -118,7 +118,7 @@ function AnimeDetails() {
                   )}
                   {width > 600 && (
                     <p>
-                      <span>Plot Summery: </span>
+                      <span>Plot Summary: </span>
                       {animeDetails[0].gogoResponse.description.replace(
                         "Plot Summary:",
                         ""

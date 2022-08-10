@@ -74,7 +74,7 @@ function Search({ isActive, setIsActive }) {
             <input
               type="text"
               required
-              placeholder={"Enter the name of the anime"}
+              placeholder={"Search Anime"}
               value={title}
               autoFocus
               onChange={(e) => {
@@ -160,7 +160,7 @@ const Content = styled.div`
     outline: none;
     border: none;
     background-color: #000000;
-    color: black;
+    color: white;
     font-size: 1rem;
     padding: 0.9rem 2rem;
     text-decoration: none;
@@ -191,7 +191,7 @@ const CloseButton = styled.div`
 
 const SearchButton = styled(Link)`
   background-color: #000000;
-  color: black;
+  color: white;
   padding: 0.9rem 2rem;
   text-decoration: none;
   border-radius: 0.3rem;
