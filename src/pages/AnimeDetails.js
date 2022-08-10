@@ -334,7 +334,7 @@ const Button = styled(Link)`
   padding: 1rem 3.4rem;
   text-align: center;
   text-decoration: none;
-  color: black;
+  color: white;
   background-color: #000000;
   font-family: "Gilroy-Bold", sans-serif;
   border-radius: 0.4rem;
