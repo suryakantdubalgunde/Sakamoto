@@ -454,7 +454,7 @@ const Conttainer = styled.div`
   margin-top: 1rem;
   font-family: "Gilroy-Medium", sans-serif;
   p {
-    color: black;
+    color: white;
   }
 
   button {
@@ -547,7 +547,7 @@ const EpisodesWrapper = styled.div`
   p {
     font-size: 1.3rem;
     text-decoration: underline;
-    color: black;
+    color: white;
     font-family: "Gilroy-Medium", sans-serif;
     margin-bottom: 1rem;
   }
@@ -568,7 +568,7 @@ const Episodes = styled.div`
 
 const EpisodeLink = styled(Link)`
   text-align: center;
-  color: black;
+  color: white;
   text-decoration: none;
   background-color: #404040;
   padding: 0.9rem 2rem;
@@ -578,7 +578,7 @@ const EpisodeLink = styled(Link)`
   transition: 0.2s;
 
   :hover {
-    background-color: #000000;
+    background-color: #202020;
   }
 `;
 
@@ -610,7 +610,7 @@ const ServerWrapper = styled.div`
   button {
     cursor: pointer;
     outline: none;
-    color: black;
+    color: white;
     background-color: #404040;
     border: 1px solid #808080;
     padding: 0.7rem 1.5rem;
@@ -641,7 +641,7 @@ const EpisodeButtons = styled.div`
 `;
 
 const EpisodeLinks = styled(Link)`
-  color: black;
+  color: white;
   padding: 0.6rem 1rem;
   background-color: #404040;
   border: 1px solid #808080;
@@ -675,7 +675,7 @@ const Titles = styled.div`
     background-color: #404040;
     border: 1px solid #808080;
     text-decoration: none;
-    color: black;
+    color: white;
     padding: 0.7rem 1.1rem 0.7rem 1.5rem;
     border-radius: 0.4rem;
   }
