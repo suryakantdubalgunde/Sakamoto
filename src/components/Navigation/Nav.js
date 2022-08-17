@@ -88,9 +88,10 @@ const Button = styled.button`
   }
   black-space: nowrap;
   @media screen and (max-width: 600px) {
+    color: black;
     padding: 0.5rem;
     padding-right: 0;
-    background-color: #000000;
+    background-color: transparent;
   }
 `;
 
