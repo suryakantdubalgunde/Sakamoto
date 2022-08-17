@@ -90,7 +90,7 @@ const Button = styled.button`
   @media screen and (max-width: 600px) {
     padding: 0.5rem;
     padding-right: 0;
-    background-color: transparent;
+    background-color: #000000;
   }
 `;
 
