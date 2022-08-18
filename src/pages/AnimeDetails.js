@@ -228,7 +228,7 @@ const EpisodeLink = styled(Link)`
   text-decoration: none;
   background-color: #404040;
   padding: 0.9rem 2rem;
-  font-family: "Shorai Sans StdN-Medium", sans-serif;
+  font-family: "Gilroy-Medium", sans-serif;
   border-radius: 0.5rem;
   border: 1px solid #808080;
   transition: 0.2s;
@@ -240,7 +240,7 @@ const EpisodeLink = styled(Link)`
   @media screen and (max-width: 600px) {
     padding: 1rem;
     border-radius: 0.3rem;
-    font-family: "Shorai Sans StdN-Bold", sans-serif;
+    font-family: "Gilroy-Bold", sans-serif;
   }
 `;
 
@@ -265,16 +265,16 @@ const ContentWrapper = styled.div`
     margin: 1rem;
     font-size: 1rem;
     color: #808080;
-    font-family: "Shorai Sans StdN-Regular", sans-serif;
+    font-family: "Gilroy-Regular", sans-serif;
     span {
-      font-family: "Shorai Sans StdN-Bold", sans-serif;
+      font-family: "Gilroy-Bold", sans-serif;
       color: black;
     }
     p {
       text-align: justify;
     }
     h1 {
-      font-family: "Shorai Sans StdN-Bold", sans-serif;
+      font-family: "Gilroy-Bold", sans-serif;
       font-weight: normal;
       color: black;
     }
@@ -302,7 +302,7 @@ const ContentWrapper = styled.div`
         outline: none;
         background-color: transparent;
         text-decoration: underline;
-        font-family: "Shorai Sans StdN-Bold", sans-serif;
+        font-family: "Gilroy-Bold", sans-serif;
         font-size: 1rem;
         color: black;
       }
@@ -336,7 +336,7 @@ const Button = styled(Link)`
   text-decoration: none;
   color: white;
   background-color: #000000;
-  font-family: "Shorai Sans StdN-Bold", sans-serif;
+  font-family: "Gilroy-Bold", sans-serif;
   border-radius: 0.4rem;
   position: relative;
   top: -25%;
