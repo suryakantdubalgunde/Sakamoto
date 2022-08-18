@@ -197,7 +197,7 @@ const Wrapper = styled.div`
   }
 
   p {
-    color: black;
+    color: white;
     font-size: 1rem;
     font-family: "Gilroy-Medium", sans-serif;
     @media screen and (max-width: 600px) {
