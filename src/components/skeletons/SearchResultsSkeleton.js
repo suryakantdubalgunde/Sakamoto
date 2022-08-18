@@ -1,4 +1,4 @@
-import React from "react";
+Shorai Sans StdNimport React from "react";
 import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
 import useWindowDimensions from "../../hooks/useWindowDimensions";

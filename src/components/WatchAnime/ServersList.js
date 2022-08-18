@@ -1,4 +1,4 @@
-import React from "react";
+Shorai Sans StdNimport React from "react";
 import styled from "styled-components";
 
 function ServersList({ episodeLinks, currentServer, setCurrentServer }) {

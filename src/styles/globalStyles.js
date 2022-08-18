@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+Shorai Sans StdNimport { createGlobalStyle } from "styled-components";
 
 // font-family: 'Gilroy-Bold', sans-serif;
 // font-family: 'Gilroy-Heavy', sans-serif;

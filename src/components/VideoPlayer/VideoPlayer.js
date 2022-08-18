@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+Shorai Sans StdNimport React, { useEffect, useState } from "react";
 import { HiOutlineSwitchHorizontal } from "react-icons/hi";
 import { BsSkipEnd } from "react-icons/bs";
 import { IconContext } from "react-icons";

@@ -1,4 +1,4 @@
-import axios from "axios";
+Shorai Sans StdNimport axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
