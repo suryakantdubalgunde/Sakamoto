@@ -60,7 +60,7 @@ function AnimeDetails() {
                   animeDetails[0].anilistResponse !== "NONE" &&
                   animeDetails[0].anilistResponse.anilistBannerImage !== null
                     ? animeDetails[0].anilistResponse.anilistBannerImage
-                    : "https://cdn.wallpapersafari.com/41/44/6Q9Nwh.jpg"
+                    : "https://media.discordapp.net/attachments/1009328245533065288/1009740976711020575/Sakamoto_Public_Preview.png"
                 }
                 alt=""
               />
