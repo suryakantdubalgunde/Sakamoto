@@ -16,7 +16,7 @@ let searchAnimeQuery = `
 	query($search: String) {
 		Media (search : $search, type: ANIME, sort:POPULARITY_DESC) {
 			title {
-				romaji
+				english
 				english
 				userPreferred
 			}

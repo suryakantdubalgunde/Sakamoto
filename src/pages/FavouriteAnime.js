@@ -35,7 +35,7 @@ function FavouriteAnime() {
                   "/search/" +
                   (item.title.userPreferred !== null
                     ? item.title.userPreferred
-                    : item.title.romaji)
+                    : item.title.english)
                 }
               >
                 <img src={item.coverImage.large} alt="" />

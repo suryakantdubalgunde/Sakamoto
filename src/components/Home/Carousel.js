@@ -53,16 +53,16 @@ function Carousel({ images }) {
                             ? item.title.english.length > 35
                               ? item.title.english.substring(0, 35) + "..."
                               : item.title.english
-                            : item.title.romaji.length > 35
-                            ? item.title.romaji.substring(0, 35) + "..."
-                            : item.title.romaji}
+                            : item.title.english.length > 35
+                            ? item.title.english.substring(0, 35) + "..."
+                            : item.title.english}
                         </p>
                       )}
                       {width > 600 && (
                         <p>
                           {item.title.english !== null
                             ? item.title.english
-                            : item.title.romaji}
+                            : item.title.english}
                         </p>
                       )}
 
@@ -76,7 +76,7 @@ function Carousel({ images }) {
                             },
                           }}
                         >
-                          <Button to={"search/" + item.title.romaji}>
+                          <Button to={"search/" + item.title.english}>
                             <BsFillPlayFill />
                           </Button>
                         </IconContext.Provider>
@@ -92,7 +92,7 @@ function Carousel({ images }) {
                             },
                           }}
                         >
-                          <Button to={"search/" + item.title.romaji}>
+                          <Button to={"search/" + item.title.english}>
                             <BsFillPlayFill />
                             Watch Now
                           </Button>
