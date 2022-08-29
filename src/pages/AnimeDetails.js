@@ -19,7 +19,7 @@ function AnimeDetails() {
 
   async function getAnimeDetails() {
     setLoading(true);
-    setExpanded(false);
+    setExpanded(false); //let res = await axios.get
     window.scrollTo(0, 0);
     let res = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}api/getanime?link=/category/${slug}`
@@ -27,6 +27,19 @@ function AnimeDetails() {
     setLoading(false);
     setAnimeDetails(res.data);
     getLocalStorage(res.data);
+  }
+
+  async function getAnimeDetails() {
+    setLoading(true);
+    setExpanded(false);
+    window.scrollTo(0, 0);
+    let res = await axios.get(
+      `https://sakamoto-api.vercel.app/api/getanime?link=/category/${slug}`
+    );
+    setLoading(false);
+    setAnimeDetails(res.data);
+    getLocalStorage(res.data);
+    document.title = res.data[0].gogoResponse.title
   }
 
   function readMoreHandler() {
