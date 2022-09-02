@@ -34,6 +34,9 @@ function Nav() {
               },
             }}
           >
+
+            <Button to="janica.jp">Support</Button>
+
             <Button onClick={(e) => setIsActive(!isActive)}>
               <FiSearch />
             </Button>
