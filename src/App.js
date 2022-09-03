@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Navigation/Nav";
 import AnimeDetails from "./pages/AnimeDetails";
 import FavouriteAnime from "./pages/FavouriteAnime";
+import Footer from './components/Footer/Footer';
 import Home from "./pages/Home";
 import PopularAnime from "./pages/PopularAnime";
 import SearchResults from "./pages/SearchResults";
@@ -25,6 +26,7 @@ function App() {
         <Route path="/category/:slug" element={<AnimeDetails />} />
         <Route path="/watch/:episode" element={<WatchAnime />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
