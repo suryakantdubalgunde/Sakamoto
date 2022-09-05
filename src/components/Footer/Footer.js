@@ -14,7 +14,7 @@ return (
 	<Container>
 		<Row>
 		<Column>
-		<img src="Akio.png" width="130" alt="Akio"></img>
+		<img src="AkioKun.png" width="130" alt="Akio"></img>
 		<Heading>SAKAMOTO</Heading>
 		</Column>
 		<Column>
