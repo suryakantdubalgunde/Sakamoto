@@ -16,7 +16,7 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
                 style={
                   currentServer === episodeLinks[0].vidstreaming
                     ? {
-                        backgroundColor: "#000000",
+                        backgroundColor: "#FFFFFF",
                       }
                     : {}
                 }
@@ -32,7 +32,7 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
                 style={
                   currentServer === episodeLinks[0].streamsb
                     ? {
-                        backgroundColor: "#000000",
+                        backgroundColor: "#FFFFFF",
                       }
                     : {}
                 }
@@ -48,7 +48,7 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
                 style={
                   currentServer === episodeLinks[0].gogoserver
                     ? {
-                        backgroundColor: "#000000",
+                        backgroundColor: "#FFFFFF",
                       }
                     : {}
                 }
@@ -64,7 +64,7 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
                 style={
                   currentServer === episodeLinks[0].xstreamcdn
                     ? {
-                        backgroundColor: "#000000",
+                        backgroundColor: "#FFFFFF",
                       }
                     : {}
                 }
@@ -80,7 +80,7 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
                 style={
                   currentServer === episodeLinks[0].mixdrop
                     ? {
-                        backgroundColor: "#000000",
+                        backgroundColor: "#FFFFFF",
                       }
                     : {}
                 }
@@ -96,7 +96,7 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
                 style={
                   currentServer === episodeLinks[0].mp4upload
                     ? {
-                        backgroundColor: "#000000",
+                        backgroundColor: "#FFFFFF",
                       }
                     : {}
                 }
@@ -112,7 +112,7 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
                 style={
                   currentServer === episodeLinks[0].doodstream
                     ? {
-                        backgroundColor: "#000000",
+                        backgroundColor: "#FFFFFF",
                       }
                     : {}
                 }
@@ -129,7 +129,7 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
 
 const ServerWrapper = styled.div`
   p {
-    color: black;
+    color: #FFFFFF;
     font-size: 1.4rem;
     font-family: "Gilroy-Medium", sans-serif;
     text-decoration: underline;
@@ -137,7 +137,7 @@ const ServerWrapper = styled.div`
 
   .server-wrapper {
     padding: 1rem;
-    background-color: #FFFFFF;
+    background-color: #23272A;
     border: 1px solid #808080;
     border-radius: 0.4rem;
     box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
@@ -155,7 +155,7 @@ const ServerWrapper = styled.div`
   button {
     cursor: pointer;
     outline: none;
-    color: black;
+    color: #FFFFFF;
     background-color: #808080;
     border: 1px solid #404040;
     padding: 0.7rem 1.5rem;

@@ -39,7 +39,7 @@ function SearchResultsSkeleton({ name }) {
 
 const Heading = styled.p`
   font-size: 1.8rem;
-  color: black;
+  color: #FFFFFF;
   font-family: "Gilroy-Light", sans-serif;
   margin-bottom: 2rem;
   span {

@@ -49,7 +49,7 @@ function SearchResults() {
 const Parent = styled.div`
   margin: 2rem 5rem 2rem 5rem;
   h2 {
-    color: black;
+    color: #FFFFFF;
   }
   @media screen and (max-width: 600px) {
     margin: 1rem;
@@ -116,7 +116,7 @@ const Wrapper = styled(Link)`
   }
 
   p {
-    color: black;
+    color: #FFFFFF;
     font-size: 1rem;
     font-family: "Gilroy-Medium", sans-serif;
     text-decoration: none;
@@ -130,7 +130,7 @@ const Wrapper = styled(Link)`
 
 const Heading = styled.p`
   font-size: 1.8rem;
-  color: black;
+  color: #FFFFFF;
   font-family: "Gilroy-Light", sans-serif;
   margin-bottom: 2rem;
   span {

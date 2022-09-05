@@ -94,11 +94,11 @@ function Home() {
 }
 
 const Links = styled(Link)`
-  color: black;
+  color: #FFFFFF;
   font-size: 1.1rem;
   font-family: "Gilroy-Medium", sans-serif;
   @media screen and (max-width: 600px) {
-    color: black;
+    color: #FFFFFF;
     font-size: 1rem;
     font-family: "Gilroy-Medium", sans-serif;
   }
@@ -113,7 +113,7 @@ const HomeDiv = styled.div`
 
 const HomeHeading = styled.p`
   font-size: 2.3rem;
-  color: black;
+  color: #FFFFFF;
   font-family: "Gilroy-Light", sans-serif;
 
   span {
@@ -128,7 +128,7 @@ const HomeHeading = styled.p`
 
 const Heading = styled.p`
   font-size: 1.8rem;
-  color: black;
+  color: #FFFFFF;
   font-family: "Gilroy-Light", sans-serif;
 
   span {

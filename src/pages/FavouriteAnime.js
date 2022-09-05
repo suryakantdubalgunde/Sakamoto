@@ -109,7 +109,7 @@ const Links = styled(Link)`
   }
 
   p {
-    color: black;
+    color: #FFFFFF;
     font-size: 1rem;
     font-family: "Gilroy-Medium", sans-serif;
     text-decoration: none;
@@ -123,7 +123,7 @@ const Links = styled(Link)`
 
 const Heading = styled.p`
   font-size: 1.8rem;
-  color: black;
+  color: #FFFFFF;
   font-family: "Gilroy-Light", sans-serif;
   margin-bottom: 2rem;
   span {

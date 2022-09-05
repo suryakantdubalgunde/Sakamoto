@@ -103,7 +103,7 @@ const Wrapper = styled.div`
   }
 
   p {
-    color: black;
+    color: #FFFFFF;
     font-size: 1rem;
     font-family: "Gilroy-Medium", sans-serif;
   }

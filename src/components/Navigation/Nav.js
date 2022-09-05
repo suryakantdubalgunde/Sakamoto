@@ -14,10 +14,10 @@ function Nav() {
     <div>
       <NavBar>
         <Link to="/">
-          <img src="./assets/logo.svg" alt="Sakamoto" />
+          <img src="./assets/logo.png" alt="Sakamoto" />
         </Link>
         <div className="nav-links">
-          <Links to="/trending">Trending</Links>
+          <Links to="/trending">Home</Links>
           <Links to="/popular">Popular</Links>
           <Links to="/favourites">Favourites</Links>
           <Links to="/top100">Top 100 Anime</Links>
@@ -74,9 +74,9 @@ const Shadow = styled.div`
 `;
 
 const Button = styled.button`
-  color: white;
+  color: #23272A;
   font-family: "Gilroy-Bold", sans-serif;
-  background-color: #000000;
+  background-color: #FFFFFF;
   outline: none;
   border: none;
   padding: 0.7rem 1.6rem 0.7rem 1.6rem;
@@ -86,9 +86,9 @@ const Button = styled.button`
   FiSearch {
     font-size: 1rem;
   }
-  black-space: nowrap;
+  white-space: nowrap;
   @media screen and (max-width: 600px) {
-    color: black;
+    color: #FFFFFF;
     padding: 0.5rem;
     padding-right: 0;
     background-color: transparent;
@@ -96,7 +96,7 @@ const Button = styled.button`
 `;
 
 const Links = styled(Link)`
-  color: black;
+  color: #FFFFFF;
   font-family: "Gilroy-Medium", sans-serif;
   text-decoration: none;
   margin: 0rem 1.3rem 0 1.3rem;

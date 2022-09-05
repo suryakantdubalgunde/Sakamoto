@@ -75,7 +75,7 @@ const EpisodesWrapper = styled.div`
   p {
     font-size: 1.3rem;
     text-decoration: underline;
-    color: black;
+    color: #FFFFFF;
     font-family: "Gilroy-Medium", sans-serif;
     margin-bottom: 1rem;
   }

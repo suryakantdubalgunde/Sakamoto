@@ -8,3 +8,7 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+window.addEventListener('contextmenu', function (e) {
+  e.preventDefault();
+}, false);

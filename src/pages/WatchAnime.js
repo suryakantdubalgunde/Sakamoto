@@ -199,7 +199,7 @@ function WatchAnime() {
                       <IconContext.Provider
                         value={{
                           size: "1.5rem",
-                          color: "black",
+                          color: "#FFFFFF",
                           style: {
                             verticalAlign: "middle",
                           },
@@ -234,7 +234,7 @@ function WatchAnime() {
                           <IconContext.Provider
                             value={{
                               size: "1.8rem",
-                              color: "black",
+                              color: "#FFFFFF",
                               style: {
                                 verticalAlign: "middle",
                                 cursor: "pointer",
@@ -404,7 +404,7 @@ function WatchAnime() {
                               episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
                             ) ===
                               i + 1 || i < localStorageDetails
-                              ? { backgroundColor: "#000000" }
+                              ? { backgroundColor: "#FFFFFF" }
                               : {}
                           }
                         >
@@ -423,7 +423,7 @@ function WatchAnime() {
                               episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
                             ) ===
                               i + 1 || i < localStorageDetails
-                              ? { backgroundColor: "#000000" }
+                              ? { backgroundColor: "#FFFFFF" }
                               : {}
                           }
                         >
@@ -454,7 +454,7 @@ const Conttainer = styled.div`
   margin-top: 1rem;
   font-family: "Gilroy-Medium", sans-serif;
   p {
-    color: white;
+    color: #23272A;
   }
 
   button {
@@ -468,7 +468,7 @@ const Conttainer = styled.div`
   .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
+    border-bottom: 1px dotted #FFFFFF;
   }
 
   .tooltip .tooltiptext {
@@ -496,7 +496,7 @@ const Conttainer = styled.div`
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: black transparent transparent transparent;
+    border-color: #FFFFFF transparent transparent transparent;
   }
 
   .tooltip:hover .tooltiptext {
@@ -568,13 +568,13 @@ const Episodes = styled.div`
 
 const EpisodeLink = styled(Link)`
   text-align: center;
-  color: white;
+  color: #FFFFFF;
   text-decoration: none;
   background-color: #404040;
   padding: 0.9rem 2rem;
   font-family: "Gilroy-Medium", sans-serif;
   border-radius: 0.4rem;
-  border: 1px solid #808080;
+  border: 1px solid #23272A;
   transition: 0.2s;
 
   :hover {
@@ -584,7 +584,7 @@ const EpisodeLink = styled(Link)`
 
 const ServerWrapper = styled.div`
   p {
-    color: black;
+    color: #FFFFFF;
     font-size: 1.4rem;
     font-family: "Gilroy-Medium", sans-serif;
     text-decoration: underline;
@@ -610,7 +610,7 @@ const ServerWrapper = styled.div`
   button {
     cursor: pointer;
     outline: none;
-    color: white;
+    color: #23272A;
     background-color: #404040;
     border: 1px solid #808080;
     padding: 0.7rem 1.5rem;
@@ -641,7 +641,7 @@ const EpisodeButtons = styled.div`
 `;
 
 const EpisodeLinks = styled(Link)`
-  color: white;
+  color: #23272A;
   padding: 0.6rem 1rem;
   background-color: #404040;
   border: 1px solid #808080;
@@ -659,7 +659,7 @@ const Titles = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: black;
+  color: #FFFFFF;
   margin-bottom: 0.5rem;
   p {
     font-size: 1.7rem;
@@ -675,7 +675,7 @@ const Titles = styled.div`
     background-color: #404040;
     border: 1px solid #808080;
     text-decoration: none;
-    color: white;
+    color: #23272A;
     padding: 0.7rem 1.1rem 0.7rem 1.5rem;
     border-radius: 0.4rem;
   }

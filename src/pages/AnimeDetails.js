@@ -168,7 +168,7 @@ function AnimeDetails() {
                       <EpisodeLink
                         style={
                           i < localStorageDetails - 1
-                            ? { backgroundColor: "#000000" }
+                            ? { backgroundColor: "#FFFFFF" }
                             : {}
                         }
                         to={"/watch" + item}
@@ -184,7 +184,7 @@ function AnimeDetails() {
                       <EpisodeLink
                         style={
                           i < localStorageDetails - 1
-                            ? { backgroundColor: "#000000" }
+                            ? { backgroundColor: "#FFFFFF" }
                             : {}
                         }
                         to={"/watch" + item}
@@ -208,7 +208,7 @@ const Episode = styled.div`
   padding: 2rem;
   outline: 2px solid #272639;
   border-radius: 0.5rem;
-  color: black;
+  color: #FFFFFF;
 
   h2 {
     font-size: 1.4rem;
@@ -237,7 +237,7 @@ const Episodes = styled.div`
 
 const EpisodeLink = styled(Link)`
   text-align: center;
-  color: white;
+  color: #23272A;
   text-decoration: none;
   background-color: #404040;
   padding: 0.9rem 2rem;
@@ -247,7 +247,7 @@ const EpisodeLink = styled(Link)`
   transition: 0.2s;
 
   :hover {
-    background-color: #000000;
+    background-color: #FFFFFF;
   }
 
   @media screen and (max-width: 600px) {
@@ -281,7 +281,7 @@ const ContentWrapper = styled.div`
     font-family: "Gilroy-Regular", sans-serif;
     span {
       font-family: "Gilroy-Bold", sans-serif;
-      color: black;
+      color: #FFFFFF;
     }
     p {
       text-align: justify;
@@ -289,7 +289,7 @@ const ContentWrapper = styled.div`
     h1 {
       font-family: "Gilroy-Bold", sans-serif;
       font-weight: normal;
-      color: black;
+      color: #FFFFFF;
     }
     button {
       display: none;
@@ -317,7 +317,7 @@ const ContentWrapper = styled.div`
         text-decoration: underline;
         font-family: "Gilroy-Bold", sans-serif;
         font-size: 1rem;
-        color: black;
+        color: #FFFFFF;
       }
     }
   }
@@ -347,13 +347,13 @@ const Button = styled(Link)`
   padding: 1rem 3.4rem;
   text-align: center;
   text-decoration: none;
-  color: white;
-  background-color: #000000;
+  color: #23272A;
+  background-color: #FFFFFF;
   font-family: "Gilroy-Bold", sans-serif;
   border-radius: 0.4rem;
   position: relative;
   top: -25%;
-  black-space: nowrap;
+  #FFFFFF-space: nowrap;
 
   @media screen and (max-width: 600px) {
     display: block;

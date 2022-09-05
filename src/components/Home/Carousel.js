@@ -158,7 +158,7 @@ const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: #FFFFFF;
   margin: 6rem 2.3rem 0 2.3rem;
 
   p {
@@ -176,10 +176,10 @@ const Content = styled.div`
 `;
 
 const Button = styled(Link)`
-  color: white;
+  color: #202020;
   font-family: "Gilroy-Bold", sans-serif;
   text-decoration: none;
-  background-color: #000000;
+  background-color: #FFFFFF;
   outline: none;
   border: none;
   padding: 0.75rem 1.3rem 0.75rem 1.3rem;

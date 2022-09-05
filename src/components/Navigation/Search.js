@@ -24,7 +24,7 @@ function Search({ isActive, setIsActive }) {
         <IconContext.Provider
           value={{
             size: "1.5rem",
-            color: "black",
+            color: "#23272A",
             style: {
               verticalAlign: "middle",
               marginBottom: "0.1rem",
@@ -110,7 +110,7 @@ const Content = styled.div`
   border-radius: 0.5rem;
 
   .main {
-    background-color: black;
+    background-color: #23272A;
     padding: 0.5rem;
     padding-left: 1.2rem;
     padding-right: 0.8rem;
@@ -148,7 +148,7 @@ const Content = styled.div`
     }
 
     div {
-      background-color: black;
+      background-color: #23272A;
       padding: 0.3rem 1rem;
       border-radius: 0.3rem;
       width: 100%;
@@ -159,8 +159,8 @@ const Content = styled.div`
   button {
     outline: none;
     border: none;
-    background-color: #000000;
-    color: white;
+    background-color: #23272A;
+    color: #FFFFFF;
     font-size: 1rem;
     padding: 0.9rem 2rem;
     text-decoration: none;
@@ -190,8 +190,8 @@ const CloseButton = styled.div`
 `;
 
 const SearchButton = styled(Link)`
-  background-color: #000000;
-  color: white;
+  background-color: #23272A;
+  color: #FFFFF;
   padding: 0.9rem 2rem;
   text-decoration: none;
   border-radius: 0.3rem;

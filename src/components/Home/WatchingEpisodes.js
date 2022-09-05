@@ -136,7 +136,7 @@ function WatchingEpisodes() {
                 <IconContext.Provider
                   value={{
                     size: "1.2rem",
-                    color: "black",
+                    color: "#FFFFFF",
                     style: {
                       verticalAlign: "middle",
                     },
@@ -197,7 +197,7 @@ const Wrapper = styled.div`
   }
 
   p {
-    color: black;
+    color: #FFFFFF;
     font-size: 1rem;
     font-family: "Gilroy-Medium", sans-serif;
     @media screen and (max-width: 600px) {
@@ -210,7 +210,7 @@ const Wrapper = styled.div`
 
   .episodeNumber {
     font-family: "Gilroy-Regular", sans-serif;
-    color: #FFFFFF;
+    color: #23272A;
   }
 `;
 
