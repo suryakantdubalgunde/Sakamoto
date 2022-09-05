@@ -14,7 +14,7 @@ return (
 	<Container>
 		<Row>
 		<Column>
-		<img src="AkioKun.png" width="130" alt="Akio"></img>
+		<img src="https://cdn.discordapp.com/attachments/928341740434378752/1016160204355813437/3.png" width="130" alt="Akio"></img>
 		<Heading>SAKAMOTO</Heading>
 		</Column>
 		<Column>
