@@ -19,8 +19,8 @@ function Nav() {
         <div className="nav-links">
           <Links to="/#">Home</Links>
           <Links to="/popular">Popular</Links>
-          <Links to="">/#</Links>
-          <Links to="/#">Help</Links>
+          <Links to="/#">Forum</Links>
+          <Links to="/help">Help</Links>
         </div>
 
         {width <= 600 && (
