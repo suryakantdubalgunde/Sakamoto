@@ -14,7 +14,7 @@ function Nav() {
     <div>
       <NavBar>
         <Link to="/">
-          <img src="./assets/logo.png" alt="Sakamoto" />
+          <img src="./assets/logo.png" alt="Sakamoto" size="80"/>
         </Link>
         <div className="nav-links">
           <Links to="/trending">Home</Links>
