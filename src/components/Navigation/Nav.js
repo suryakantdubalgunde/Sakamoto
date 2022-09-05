@@ -14,13 +14,13 @@ function Nav() {
     <div>
       <NavBar>
         <Link to="/">
-          <img src="./assets/logo.png" alt="Sakamoto" size="80"/>
+          <img src="./assets/logo.png" alt="Sakamoto" width="60"/>
         </Link>
         <div className="nav-links">
-          <Links to="/trending">Home</Links>
+          <Links to="/#">Home</Links>
           <Links to="/popular">Popular</Links>
-          <Links to="/favourites">Favourites</Links>
-          <Links to="/top100">Top 100 Anime</Links>
+          <Links to="">/#</Links>
+          <Links to="/#">Help</Links>
         </div>
 
         {width <= 600 && (
@@ -86,7 +86,7 @@ const Button = styled.button`
   FiSearch {
     font-size: 1rem;
   }
-  white-space: nowrap;
+  black-space: nowrap;
   @media screen and (max-width: 600px) {
     color: #FFFFFF;
     padding: 0.5rem;
