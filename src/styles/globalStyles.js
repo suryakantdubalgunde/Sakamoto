@@ -9,12 +9,38 @@ const GlobalStyle = createGlobalStyle`
 	body {
 		background-color: #23272A;
 		font-family: 'Gilroy-Regular', sans-serif;
+			user-select: none;
+			-webkit-user-select: none; /* Safari 3.1+ */
+			-moz-user-select: none; /* Firefox 2+ */
+			-ms-user-select: none; /* IE 10+ */
+		  }
 	}
 
 	::placeholder {
 		color: #FFFFFF;
 		opacity: 0.3;
 	}
+
+	/* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #4f4f4f #141414;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #141414;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #4f4f4f;
+    border-radius: 10px;
+    border: 0px none #ffffff;
+  }
 
 	.swiper-pagination-bullet-active {
     background-color: #FFFFFF !important;
