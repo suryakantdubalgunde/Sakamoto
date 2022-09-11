@@ -25,7 +25,7 @@ return (
 		</Column>
 		<Column>
 			<Heading>  </Heading>
-			<FooterLink href="#">Staff</FooterLink>
+			<FooterLink href="https://github.com/ShivamKun">Staff</FooterLink>
 			<FooterLink href="#">Terms</FooterLink>
 			<FooterLink href="#">Privacy</FooterLink>
 		</Column>
