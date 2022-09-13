@@ -26,8 +26,8 @@ return (
 		<Column>
 			<Heading>  </Heading>
 			<FooterLink href="https://github.com/ShivamKun">Staff</FooterLink>
-			<FooterLink href="#">Terms</FooterLink>
-			<FooterLink href="#">Privacy</FooterLink>
+			<FooterLink href="https://shivamkun.github.io/Sakamoto/pages/ToS.html">Terms</FooterLink>
+			<FooterLink href="https://shivamkun.github.io/Sakamoto/pages/Privacy.html">Privacy</FooterLink>
 		</Column>
 		<Column>
 			<Heading>  </Heading>
