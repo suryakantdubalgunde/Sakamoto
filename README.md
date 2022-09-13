@@ -3,6 +3,16 @@
   <a href="https://sakamoto.live"><img src="public/assets/img/Cover.png" alt="Cover"></a>
 </h1>
 
+<p align="center">
+<a href="#"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/></a>
+<a href="#"><img src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white"/></a>
+<a href="#"><img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"/></a>
+<a href="#"><img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/></a>
+<a href="#"><img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white"/></a>
+<a href="#"><img src="https://img.shields.io/badge/Sakamoto-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white"/></a>
+<a href="#"><img src="https://img.shields.io/badge/Crunchyroll-F47521?style=for-the-badge&logo=crunchyroll&logoColor=white"/></a>
+</p>
+
 > Sakamoto Light Theme is available at **[Release v1.2](https://github.com/ShivamKun/Sakamoto/releases/tag/v1.3)** and production website is available on **[sakamoto.live](https://sakamoto.live)**
 
 ---
