@@ -31,7 +31,7 @@ return (
 		</Column>
 		<Column>
 			<Heading>  </Heading>
-			<FooterLink href="#">Forum</FooterLink>
+			<FooterLink href="https://github.com/ShivamKun/Sakamoto/discussions">Forum</FooterLink>
 			<FooterLink href="#">We're Hiring!</FooterLink>
 			<FooterLink href="#">Support</FooterLink>
 		</Column>
