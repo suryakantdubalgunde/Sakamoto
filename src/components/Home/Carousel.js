@@ -186,6 +186,11 @@ const Button = styled(Link)`
   border-radius: 0.4rem;
   cursor: pointer;
   font-size: 0.9rem;
+  
+  .Button:hover {
+    background-color:#808080;
+    transition: 0.7s;
+}
 
   @media screen and (max-width: 600px) {
     border-radius: 50%;
