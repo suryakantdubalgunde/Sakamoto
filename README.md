@@ -20,7 +20,7 @@
 
 Sakamoto is an Anime Streaming Site with minimal UI and ad-free anime streaming experience.
 
-Wanna know more about us? Check out our **[Docs](https://docs.sakamoto.live)**!
+Wanna know more about us? Check out our **[Docs](https://shivamkun.github.io/Sakamoto)**!
 
 **Backend**: works on **[sakamoto-api](https://sakamoto-api.vercel.app)** with /routes for trending, favourites and popular.
 
