@@ -263,6 +263,7 @@ const Conttainer = styled.div`
   }
 
   button {
+    color: #202020;
     outline: none;
     border: none;
     background: transparent;
