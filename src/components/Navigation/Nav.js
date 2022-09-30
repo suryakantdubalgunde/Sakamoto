@@ -67,7 +67,7 @@ const Shadow = styled.div`
   z-index: 9;
   position: absolute;
   top: 0;
-  height: 100vh;
+  height: 420vh;
   width: 98.6vw;
   background-color: rgba(0, 0, 0, 0.6);
   overflow: hidden;
@@ -83,6 +83,9 @@ const Button = styled.button`
   border-radius: 0.4rem;
   cursor: pointer;
   font-size: 0.9rem;
+  &:hover {
+    background-color: #808080;
+  }
   FiSearch {
     font-size: 1rem;
   }
@@ -92,22 +95,18 @@ const Button = styled.button`
     padding: 0.5rem;
     padding-right: 0;
     background-color: transparent;
+    &:hover {
+      background-color: transparent;
+      color: #808080;
+    }
   }
 `;
 
 const Links = styled(Link)`
-  color: #CCCCCC;
+  color: #FFFFFF;
   font-family: "Gilroy-Medium", sans-serif;
   text-decoration: none;
   padding: 0rem 1.3rem 0.5rem 1.3rem;
-  &:hover {
-    border-bottom: 2px solid #FFFFFF;
-    color: #FFFFFF;
-  };
-  &:click {
-    border-bottom: 2px solid #FFFFFF;
-    color: #FFFFFF;
-  }
 `;
 
 const NavBar = styled.nav`
