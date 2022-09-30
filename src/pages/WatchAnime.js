@@ -404,7 +404,7 @@ function WatchAnime() {
                               episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
                             ) ===
                               i + 1 || i < localStorageDetails
-                              ? { backgroundColor: "#FFFFFF" }
+                              ? { backgroundColor: "#FFFFFF", color:"#23272A" }
                               : {}
                           }
                         >
@@ -423,7 +423,7 @@ function WatchAnime() {
                               episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
                             ) ===
                               i + 1 || i < localStorageDetails
-                              ? { backgroundColor: "#FFFFFF" }
+                              ? { backgroundColor: "#FFFFFF", color:"#23272A"  }
                               : {}
                           }
                         >
