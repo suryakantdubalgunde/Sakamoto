@@ -96,10 +96,18 @@ const Button = styled.button`
 `;
 
 const Links = styled(Link)`
-  color: #FFFFFF;
+  color: #CCCCCC;
   font-family: "Gilroy-Medium", sans-serif;
   text-decoration: none;
-  margin: 0rem 1.3rem 0 1.3rem;
+  padding: 0rem 1.3rem 0.5rem 1.3rem;
+  &:hover {
+    border-bottom: 2px solid #FFFFFF;
+    color: #FFFFFF;
+  };
+  &:click {
+    border-bottom: 2px solid #FFFFFF;
+    color: #FFFFFF;
+  }
 `;
 
 const NavBar = styled.nav`
