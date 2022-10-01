@@ -48,7 +48,7 @@ function Search({ isActive, setIsActive }) {
                   style: {
                     verticalAlign: "middle",
                     marginBottom: "0.1rem",
-                    marginRight: "0.3rem",
+                    marginRight: "1rem",
                   },
                 }}
               >
@@ -63,7 +63,7 @@ function Search({ isActive, setIsActive }) {
                   style: {
                     verticalAlign: "middle",
                     marginBottom: "0.1rem",
-                    marginRight: "0.3rem",
+                    marginRight: "1rem",
                   },
                 }}
               >
@@ -131,6 +131,7 @@ const Content = styled.div`
     font-size: 1.1rem;
     font-family: "Gilroy-Medium", sans-serif;
     width: 100%;
+    border-radius: 0.3rem;
   }
   ::placeholder {
     color: #c5c5c5;
@@ -191,7 +192,7 @@ const CloseButton = styled.div`
 
 const SearchButton = styled(Link)`
   background-color: #23272A;
-  color: #FFFFF;
+  color: #FFFFFF;
   padding: 0.9rem 2rem;
   text-decoration: none;
   border-radius: 0.3rem;
