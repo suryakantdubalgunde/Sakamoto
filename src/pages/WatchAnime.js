@@ -475,7 +475,7 @@ const Conttainer = styled.div`
     visibility: hidden;
     width: 120px;
     background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    color: #FFF;
     text-align: center;
     border-radius: 6px;
     padding: 5px 5px;
@@ -592,7 +592,7 @@ const ServerWrapper = styled.div`
 
   .server-wrapper {
     padding: 1rem;
-    background-color: #1a1927;
+    background-color: #1A1927;
     border: 1px solid #272639;
     border-radius: 0.4rem;
     box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
@@ -641,10 +641,9 @@ const EpisodeButtons = styled.div`
 `;
 
 const EpisodeLinks = styled(Link)`
-  color: #23272A;
+  color: #FFFFFF;
   padding: 0.6rem 1rem;
   background-color: #404040;
-  border: 1px solid #808080;
   text-decoration: none;
   font-family: "Gilroy-Medium", sans-serif;
   border-radius: 0.4rem;
@@ -673,9 +672,8 @@ const Titles = styled.div`
   a {
     font-family: "Gilroy-Medium", sans-serif;
     background-color: #404040;
-    border: 1px solid #808080;
     text-decoration: none;
-    color: #23272A;
+    color: #FFFFFF;
     padding: 0.7rem 1.1rem 0.7rem 1.5rem;
     border-radius: 0.4rem;
   }
