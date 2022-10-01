@@ -29,10 +29,9 @@ let searchAnimeQuery = `
 	}
 `;
 
-function WatchingEpisodes() {
+function WatchingEpisodes({ change, setChange }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [change, setChange] = useState(false);
 
   useEffect(() => {
     getData();
