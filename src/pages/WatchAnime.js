@@ -11,6 +11,7 @@ import WatchAnimeSkeleton from "../components/skeletons/WatchAnimeSkeleton";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import VideoPlayer from "../components/VideoPlayer/VideoPlayer";
 import ServersList from "../components/WatchAnime/ServersList";
+import PlayerContainer from "../components/Wrappers/PlayerContainer";
 
 function WatchAnime() {
   let episodeSlug = useParams().episode;
@@ -195,7 +196,7 @@ function WatchAnime() {
                 )}
                 {!internalPlayer && (
                   <div>
-                    <Conttainer>
+                    <PlayerContainer>
                       <IconContext.Provider
                         value={{
                           size: "1.5rem",
@@ -217,7 +218,7 @@ function WatchAnime() {
                           </div>
                         </div>
                       </IconContext.Provider>
-                    </Conttainer>
+                    </PlayerContainer>
                     <IframeWrapper>
                       <iframe
                         id="video"
@@ -441,69 +442,6 @@ function WatchAnime() {
     </div>
   );
 }
-
-const Conttainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #404040;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem 0.5rem 0 0;
-  border: 1px solid #808080;
-  border-bottom: none;
-  margin-top: 1rem;
-  font-family: "Gilroy-Medium", sans-serif;
-  p {
-    color: #23272A;
-  }
-
-  button {
-    outline: none;
-    border: none;
-    background: transparent;
-    margin-left: 1rem;
-    cursor: pointer;
-  }
-
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted #FFFFFF;
-  }
-
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #FFF;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 150%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #FFFFFF transparent transparent transparent;
-  }
-
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-  }
-`;
 
 const IframeWrapper = styled.div`
   position: relative;
