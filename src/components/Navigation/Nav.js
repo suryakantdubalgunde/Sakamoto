@@ -71,6 +71,9 @@ const Shadow = styled.div`
   width: 98.6vw;
   background-color: rgba(0, 0, 0, 0.6);
   overflow: hidden;
+  @media screen and (max-width: 600px) {
+    height: 330vh;
+  }
 `;
 
 const Button = styled.button`
