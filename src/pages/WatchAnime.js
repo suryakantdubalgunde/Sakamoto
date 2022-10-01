@@ -11,6 +11,7 @@ import WatchAnimeSkeleton from "../components/skeletons/WatchAnimeSkeleton";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import VideoPlayer from "../components/VideoPlayer/VideoPlayer";
 import ServersList from "../components/WatchAnime/ServersList";
+import PlayerContainer from "../components/Wrappers/PlayerContainer";
 
 function WatchAnime() {
   let episodeSlug = useParams().episode;
@@ -195,7 +196,7 @@ function WatchAnime() {
                 )}
                 {!internalPlayer && (
                   <div>
-                    <Conttainer>
+                    <PlayerContainer>
                       <IconContext.Provider
                         value={{
                           size: "1.5rem",
@@ -217,7 +218,7 @@ function WatchAnime() {
                           </div>
                         </div>
                       </IconContext.Provider>
-                    </Conttainer>
+                    </PlayerContainer>
                     <IframeWrapper>
                       <iframe
                         id="video"
@@ -442,69 +443,6 @@ function WatchAnime() {
   );
 }
 
-const Conttainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #404040;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem 0.5rem 0 0;
-  border: 1px solid #808080;
-  border-bottom: none;
-  margin-top: 1rem;
-  font-family: "Gilroy-Medium", sans-serif;
-  p {
-    color: #23272A;
-  }
-
-  button {
-    outline: none;
-    border: none;
-    background: transparent;
-    margin-left: 1rem;
-    cursor: pointer;
-  }
-
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted #FFFFFF;
-  }
-
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 150%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #FFFFFF transparent transparent transparent;
-  }
-
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-  }
-`;
-
 const IframeWrapper = styled.div`
   position: relative;
   padding-bottom: 56.25%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
@@ -592,7 +530,7 @@ const ServerWrapper = styled.div`
 
   .server-wrapper {
     padding: 1rem;
-    background-color: #1a1927;
+    background-color: #1A1927;
     border: 1px solid #272639;
     border-radius: 0.4rem;
     box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
@@ -641,10 +579,9 @@ const EpisodeButtons = styled.div`
 `;
 
 const EpisodeLinks = styled(Link)`
-  color: #23272A;
+  color: #FFFFFF;
   padding: 0.6rem 1rem;
   background-color: #404040;
-  border: 1px solid #808080;
   text-decoration: none;
   font-family: "Gilroy-Medium", sans-serif;
   border-radius: 0.4rem;
@@ -673,9 +610,8 @@ const Titles = styled.div`
   a {
     font-family: "Gilroy-Medium", sans-serif;
     background-color: #404040;
-    border: 1px solid #808080;
     text-decoration: none;
-    color: #23272A;
+    color: #FFFFFF;
     padding: 0.7rem 1.1rem 0.7rem 1.5rem;
     border-radius: 0.4rem;
   }
