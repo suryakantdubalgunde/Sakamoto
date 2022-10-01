@@ -219,7 +219,7 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
         <IconContext.Provider
           value={{
             size: "1.5rem",
-            color: "#000000",
+            color: "#FFFFFF",
             style: {
               verticalAlign: "middle",
             },
@@ -251,15 +251,14 @@ const Conttainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #23272A;
+  background-color: #101010;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem 0.5rem 0 0;
-  border: 1px solid #808080;
   margin-top: 1rem;
   border-bottom: none;
   font-family: "Gilroy-Medium", sans-serif;
   p {
-    color: #23272A;
+    color: #FFFFFF;
   }
 
   button {
@@ -274,7 +273,6 @@ const Conttainer = styled.div`
   .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted #23272A;
   }
 
   .tooltip .tooltiptext {
