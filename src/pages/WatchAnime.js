@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import { BiArrowToBottom, BiFullscreen } from "react-icons/bi";
@@ -23,10 +23,37 @@ function WatchAnime() {
   const [fullScreen, setFullScreen] = useState(false);
   const [internalPlayer, setInternalPlayer] = useState(true);
   const [localStorageDetails, setLocalStorageDetails] = useState(0);
+  const [rangeFilters, setRangeFilters] = useState({});
+  const [currentRange, setCurrentRange] = useState(null);
+  const currentRangeIndex = useMemo(
+    () => Object.keys(rangeFilters).indexOf(currentRange),
+    [currentRange, rangeFilters]
+  );
 
   useEffect(() => {
     getEpisodeLinks();
   }, [episodeSlug]);
+
+  const updateChunks = (array, episode) => {
+    const rangeSize = 100;
+    const buffer = {};
+    for (let i = 0; i < array.length; i += rangeSize) {
+      const rangeValues = array.slice(i, i + rangeSize);
+      let key;
+      if (rangeValues.length === 1) {
+        key = `${(i + rangeValues.length).toString().padStart(3, 0)}`;
+      } else {
+        key = `${(i + 1).toString().padStart(3, 0)} - ${(i + rangeValues.length)
+          .toString()
+          .padStart(3, 0)}`;
+      }
+      buffer[key] = rangeValues;
+    }
+    setRangeFilters(buffer);
+    const episodeNum = episode.replace(/.*?(\d+)[^\d]*$/, "$1");
+    const rangeIndex = Math.floor((episodeNum - 1) / 100);
+    setCurrentRange(Object.keys(buffer)[rangeIndex]);
+  };
 
   async function getEpisodeLinks() {
     setLoading(true);
@@ -43,6 +70,7 @@ function WatchAnime() {
     ) {
       setInternalPlayer(true);
     }
+    updateChunks(res.data[0].episodes, episodeSlug);
     updateLocalStorage(episodeSlug, res.data);
     getLocalStorage(
       res.data[0].titleName.substring(
@@ -397,38 +425,40 @@ function WatchAnime() {
                   <p>Episodes</p>
                   {width <= 600 && (
                     <Episodes>
-                      {episodeLinks[0].episodes.map((item, i) => (
+                      {rangeFilters[currentRange]?.map((item, i) => (
                         <EpisodeLink
                           to={"/watch" + item}
                           style={
                             parseInt(
                               episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
                             ) ===
-                              i + 1 || i < localStorageDetails
-                              ? { backgroundColor: "#FFFFFF", color:"#23272A" }
+                              currentRangeIndex * 100 + i + 1 ||
+                            currentRangeIndex * 100 + i < localStorageDetails
+                              ? { backgroundColor: "#FFFFFF", color: "#23272A" }
                               : {}
                           }
                         >
-                          {i + 1}
+                          {currentRangeIndex * 100 + i + 1}
                         </EpisodeLink>
                       ))}
                     </Episodes>
                   )}
                   {width > 600 && (
                     <Episodes>
-                      {episodeLinks[0].episodes.map((item, i) => (
+                      {rangeFilters[currentRange]?.map((item, i) => (
                         <EpisodeLink
                           to={"/watch" + item}
                           style={
                             parseInt(
                               episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
                             ) ===
-                              i + 1 || i < localStorageDetails
-                              ? { backgroundColor: "#FFFFFF", color:"#23272A"  }
+                              currentRangeIndex * 100 + i + 1 ||
+                            currentRangeIndex * 100 + i < localStorageDetails
+                              ? { backgroundColor: "#FFFFFF", color: "#23272A" }
                               : {}
                           }
                         >
-                          Episode {i + 1}
+                          Episode {currentRangeIndex * 100 + i + 1}
                         </EpisodeLink>
                       ))}
                     </Episodes>
