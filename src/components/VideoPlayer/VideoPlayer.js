@@ -212,7 +212,7 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
       style={{
         marginBottom: "1rem",
         fontFamily: '"Gilroy-Medium", sans-serif',
-        "--plyr-color-main": "#991111",
+        "--plyr-color-main": "#303030",
       }}
     >
       <Conttainer>
