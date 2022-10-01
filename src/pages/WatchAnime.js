@@ -12,6 +12,7 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import VideoPlayer from "../components/VideoPlayer/VideoPlayer";
 import ServersList from "../components/WatchAnime/ServersList";
 import PlayerContainer from "../components/Wrappers/PlayerContainer";
+import Dropdown from "../components/Dropdown/Dropdown";
 
 function WatchAnime() {
   let episodeSlug = useParams().episode;
@@ -422,7 +423,14 @@ function WatchAnime() {
                   />
                 )}
                 <EpisodesWrapper>
-                  <p>Episodes</p>
+                  <div className="header">
+                    <p>Episodes</p>
+                    <Dropdown
+                      setCurrentRange={setCurrentRange}
+                      options={Object.keys(rangeFilters)}
+                      selected={currentRange}
+                    />
+                  </div>
                   {width <= 600 && (
                     <Episodes>
                       {rangeFilters[currentRange]?.map((item, i) => (
@@ -510,14 +518,23 @@ const EpisodesWrapper = styled.div`
   margin-top: 1rem;
   border: 1px solid #272639;
   border-radius: 0.4rem;
-  padding: 1rem;
+
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    width: 100%;
+    border-bottom: 1px solid #404040;
+    padding: 0.6rem 1rem;
+    justify-content: start;
+    align-items: center;
+  }
 
   p {
     font-size: 1.3rem;
     text-decoration: underline;
     color: white;
     font-family: "Gilroy-Medium", sans-serif;
-    margin-bottom: 1rem;
   }
   box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
 `;
@@ -527,6 +544,7 @@ const Episodes = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   grid-gap: 1rem;
   grid-row-gap: 1rem;
+  padding: 1rem;
   justify-content: space-between;
 
   @media screen and (max-width: 600px) {
