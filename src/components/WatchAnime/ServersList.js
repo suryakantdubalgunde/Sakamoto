@@ -2,124 +2,42 @@ import React from "react";
 import styled from "styled-components";
 
 function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
+  const listOfServers = [
+    "vidstreaming",
+    "streamsb",
+    "gogoserver",
+    "xstreamcdn",
+    "mixdrop",
+    "mp4upload",
+    "doodstream",
+  ];
   return (
     <div>
       <ServerWrapper>
         <div className="server-wrapper">
           <p>Servers List</p>
           <div className="serverlinks">
-            {episodeLinks[0].vidstreaming !== undefined && (
-              <button
-                onClick={() => {
-                  setCurrentServer(episodeLinks[0].vidstreaming);
-                }}
-                style={
-                  currentServer === episodeLinks[0].vidstreaming
-                    ? {
-                        backgroundColor: "#FFFFFF",
-                      }
-                    : {}
-                }
-              >
-                VIDSTREAMING
-              </button>
-            )}
-            {episodeLinks[0].streamsb !== undefined && (
-              <button
-                onClick={() => {
-                  setCurrentServer(episodeLinks[0].streamsb);
-                }}
-                style={
-                  currentServer === episodeLinks[0].streamsb
-                    ? {
-                        backgroundColor: "#FFFFFF",
-                      }
-                    : {}
-                }
-              >
-                STREAMSB
-              </button>
-            )}
-            {episodeLinks[0].gogoserver !== undefined && (
-              <button
-                onClick={() => {
-                  setCurrentServer(episodeLinks[0].gogoserver);
-                }}
-                style={
-                  currentServer === episodeLinks[0].gogoserver
-                    ? {
-                        backgroundColor: "#FFFFFF",
-                      }
-                    : {}
-                }
-              >
-                GOGOSERVER
-              </button>
-            )}
-            {episodeLinks[0].xstreamcdn !== undefined && (
-              <button
-                onClick={() => {
-                  setCurrentServer(episodeLinks[0].xstreamcdn);
-                }}
-                style={
-                  currentServer === episodeLinks[0].xstreamcdn
-                    ? {
-                        backgroundColor: "#FFFFFF",
-                      }
-                    : {}
-                }
-              >
-                XSTREAMCDN
-              </button>
-            )}
-            {episodeLinks[0].mixdrop !== undefined && (
-              <button
-                onClick={() => {
-                  setCurrentServer(episodeLinks[0].mixdrop);
-                }}
-                style={
-                  currentServer === episodeLinks[0].mixdrop
-                    ? {
-                        backgroundColor: "#FFFFFF",
-                      }
-                    : {}
-                }
-              >
-                MIXDROP
-              </button>
-            )}
-            {episodeLinks[0].mp4upload !== undefined && (
-              <button
-                onClick={() => {
-                  setCurrentServer(episodeLinks[0].mp4upload);
-                }}
-                style={
-                  currentServer === episodeLinks[0].mp4upload
-                    ? {
-                        backgroundColor: "#FFFFFF",
-                      }
-                    : {}
-                }
-              >
-                MP4UPLOAD
-              </button>
-            )}
-            {episodeLinks[0].doodstream !== undefined && (
-              <button
-                onClick={() => {
-                  setCurrentServer(episodeLinks[0].doodstream);
-                }}
-                style={
-                  currentServer === episodeLinks[0].doodstream
-                    ? {
-                        backgroundColor: "#FFFFFF",
-                      }
-                    : {}
-                }
-              >
-                DOODSTREAM
-              </button>
-            )}
+            {listOfServers.map((server,index) => {
+              return (
+                episodeLinks[0][server] !== undefined && (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentServer(episodeLinks[0][server]);
+                    }}
+                    style={
+                      currentServer === episodeLinks[0][server]
+                        ? {
+                            backgroundColor: "#FFFFFF",
+                          }
+                        : {}
+                    }
+                  >
+                    {server}
+                  </button>
+                )
+              );
+            })}
           </div>
         </div>
       </ServerWrapper>
