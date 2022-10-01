@@ -29,6 +29,7 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
                       currentServer === episodeLinks[0][server]
                         ? {
                             backgroundColor: "#FFFFFF",
+                            color: "#23272A",
                           }
                         : {}
                     }
@@ -80,6 +81,7 @@ const ServerWrapper = styled.div`
     border-radius: 0.4rem;
     font-family: "Gilroy-Medium", sans-serif;
     font-size: 0.9rem;
+    text-transform: uppercase;
   }
 
   @media screen and (max-width: 600px) {
