@@ -431,7 +431,6 @@ function WatchAnime() {
                       selected={currentRange}
                     />
                   </div>
-                  {width <= 600 && (
                     <Episodes>
                       {rangeFilters[currentRange]?.map((item, i) => (
                         <EpisodeLink
@@ -446,31 +445,11 @@ function WatchAnime() {
                               : {}
                           }
                         >
-                          {currentRangeIndex * 100 + i + 1}
+                          {width > 600 && `Episode ${currentRangeIndex * 100 + i + 1}`}
+                          {width <= 600 && currentRangeIndex * 100 + i + 1}
                         </EpisodeLink>
                       ))}
                     </Episodes>
-                  )}
-                  {width > 600 && (
-                    <Episodes>
-                      {rangeFilters[currentRange]?.map((item, i) => (
-                        <EpisodeLink
-                          to={"/watch" + item}
-                          style={
-                            parseInt(
-                              episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
-                            ) ===
-                              currentRangeIndex * 100 + i + 1 ||
-                            currentRangeIndex * 100 + i < localStorageDetails
-                              ? { backgroundColor: "#FFFFFF", color: "#23272A" }
-                              : {}
-                          }
-                        >
-                          Episode {currentRangeIndex * 100 + i + 1}
-                        </EpisodeLink>
-                      ))}
-                    </Episodes>
-                  )}
                 </EpisodesWrapper>
               </div>
             </div>
@@ -548,6 +527,8 @@ const Episodes = styled.div`
   justify-content: space-between;
 
   @media screen and (max-width: 600px) {
+    grid-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
     grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
   }
 `;
@@ -557,7 +538,7 @@ const EpisodeLink = styled(Link)`
   color: #FFFFFF;
   text-decoration: none;
   background-color: #404040;
-  padding: 0.9rem 2rem;
+  padding: 0.9rem 0rem;
   font-family: "Gilroy-Medium", sans-serif;
   border-radius: 0.4rem;
   border: 1px solid #23272A;
