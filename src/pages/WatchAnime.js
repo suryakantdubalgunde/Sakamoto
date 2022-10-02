@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { BiArrowToBottom, BiFullscreen } from "react-icons/bi";
 import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
 import { HiOutlineSwitchHorizontal } from "react-icons/hi";
-import { BsSkipEnd } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import WatchAnimeSkeleton from "../components/skeletons/WatchAnimeSkeleton";
 import useWindowDimensions from "../hooks/useWindowDimensions";
@@ -20,7 +19,7 @@ function WatchAnime() {
   const [episodeLinks, setEpisodeLinks] = useState([]);
   const [currentServer, setCurrentServer] = useState("");
   const [loading, setLoading] = useState(true);
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const [fullScreen, setFullScreen] = useState(false);
   const [internalPlayer, setInternalPlayer] = useState(true);
   const [localStorageDetails, setLocalStorageDetails] = useState(0);
@@ -32,54 +31,97 @@ function WatchAnime() {
   );
 
   useEffect(() => {
+    function updateLocalStorage(episode, episodeLinks) {
+      let episodeNum = episode.replace(/.*?(\d+)[^\d]*$/, "$1");
+      let animeName = episodeLinks[0].titleName.substring(
+        0,
+        episodeLinks[0].titleName.indexOf("Episode")
+      );
+      animeName = animeName.substring(0, animeName.length - 1);
+      if (localStorage.getItem("Animes")) {
+        let lsData = localStorage.getItem("Animes");
+        lsData = JSON.parse(lsData);
+  
+        let index = lsData.Names.findIndex((i) => i.name === animeName);
+        if (index !== -1) {
+          lsData.Names.splice(index, 1);
+          lsData.Names.unshift({
+            name: animeName,
+            currentEpisode: episodeNum,
+            episodeLink: episodeSlug,
+          });
+        } else {
+          lsData.Names.unshift({
+            name: animeName,
+            currentEpisode: episodeNum,
+            episodeLink: episodeSlug,
+          });
+        }
+        lsData = JSON.stringify(lsData);
+        localStorage.setItem("Animes", lsData);
+      } else {
+        let data = {
+          Names: [],
+        };
+        data.Names.push({
+          name: animeName,
+          currentEpisode: episodeNum,
+          episodeLink: episodeSlug,
+        });
+        data = JSON.stringify(data);
+        localStorage.setItem("Animes", data);
+      }
+    }
+
+    const updateChunks = (array, episode) => {
+      const rangeSize = 100;
+      const buffer = {};
+      for (let i = 0; i < array.length; i += rangeSize) {
+        const rangeValues = array.slice(i, i + rangeSize);
+        let key;
+        if (rangeValues.length === 1) {
+          key = `${(i + rangeValues.length).toString().padStart(3, 0)}`;
+        } else {
+          key = `${(i + 1).toString().padStart(3, 0)} - ${(
+            i + rangeValues.length
+          )
+            .toString()
+            .padStart(3, 0)}`;
+        }
+        buffer[key] = rangeValues;
+      }
+      setRangeFilters(buffer);
+      const episodeNum = episode.replace(/.*?(\d+)[^\d]*$/, "$1");
+      const rangeIndex = Math.floor((episodeNum - 1) / 100);
+      setCurrentRange(Object.keys(buffer)[rangeIndex]);
+    };
+
+    async function getEpisodeLinks() {
+      setLoading(true);
+      window.scrollTo(0, 0);
+      let res = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}api/getlinks?link=/${episodeSlug}`
+      );
+      setLoading(false);
+      setEpisodeLinks(res.data);
+      setCurrentServer(res.data[0].vidstreaming);
+      if (
+        res.data[0].sources.sources !== null ||
+        res.data[0].sources.sources !== undefined
+      ) {
+        setInternalPlayer(true);
+      }
+      updateChunks(res.data[0].episodes, episodeSlug);
+      updateLocalStorage(episodeSlug, res.data);
+      getLocalStorage(
+        res.data[0].titleName.substring(
+          0,
+          res.data[0].titleName.indexOf("Episode")
+        )
+      );
+    }
     getEpisodeLinks();
   }, [episodeSlug]);
-
-  const updateChunks = (array, episode) => {
-    const rangeSize = 100;
-    const buffer = {};
-    for (let i = 0; i < array.length; i += rangeSize) {
-      const rangeValues = array.slice(i, i + rangeSize);
-      let key;
-      if (rangeValues.length === 1) {
-        key = `${(i + rangeValues.length).toString().padStart(3, 0)}`;
-      } else {
-        key = `${(i + 1).toString().padStart(3, 0)} - ${(i + rangeValues.length)
-          .toString()
-          .padStart(3, 0)}`;
-      }
-      buffer[key] = rangeValues;
-    }
-    setRangeFilters(buffer);
-    const episodeNum = episode.replace(/.*?(\d+)[^\d]*$/, "$1");
-    const rangeIndex = Math.floor((episodeNum - 1) / 100);
-    setCurrentRange(Object.keys(buffer)[rangeIndex]);
-  };
-
-  async function getEpisodeLinks() {
-    setLoading(true);
-    window.scrollTo(0, 0);
-    let res = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}api/getlinks?link=/${episodeSlug}`
-    );
-    setLoading(false);
-    setEpisodeLinks(res.data);
-    setCurrentServer(res.data[0].vidstreaming);
-    if (
-      res.data[0].sources.sources !== null ||
-      res.data[0].sources.sources !== undefined
-    ) {
-      setInternalPlayer(true);
-    }
-    updateChunks(res.data[0].episodes, episodeSlug);
-    updateLocalStorage(episodeSlug, res.data);
-    getLocalStorage(
-      res.data[0].titleName.substring(
-        0,
-        res.data[0].titleName.indexOf("Episode")
-      )
-    );
-  }
 
   function getLocalStorage(animeDetails) {
     animeDetails = animeDetails.substring(0, animeDetails.length - 1);
@@ -105,48 +147,6 @@ function WatchAnime() {
       window.screen.orientation.lock("landscape-primary");
     } else {
       document.exitFullscreen();
-    }
-  }
-
-  function updateLocalStorage(episode, episodeLinks) {
-    let episodeNum = episode.replace(/.*?(\d+)[^\d]*$/, "$1");
-    let animeName = episodeLinks[0].titleName.substring(
-      0,
-      episodeLinks[0].titleName.indexOf("Episode")
-    );
-    animeName = animeName.substring(0, animeName.length - 1);
-    if (localStorage.getItem("Animes")) {
-      let lsData = localStorage.getItem("Animes");
-      lsData = JSON.parse(lsData);
-
-      let index = lsData.Names.findIndex((i) => i.name === animeName);
-      if (index !== -1) {
-        lsData.Names.splice(index, 1);
-        lsData.Names.unshift({
-          name: animeName,
-          currentEpisode: episodeNum,
-          episodeLink: episodeSlug,
-        });
-      } else {
-        lsData.Names.unshift({
-          name: animeName,
-          currentEpisode: episodeNum,
-          episodeLink: episodeSlug,
-        });
-      }
-      lsData = JSON.stringify(lsData);
-      localStorage.setItem("Animes", lsData);
-    } else {
-      let data = {
-        Names: [],
-      };
-      data.Names.push({
-        name: animeName,
-        currentEpisode: episodeNum,
-        episodeLink: episodeSlug,
-      });
-      data = JSON.stringify(data);
-      localStorage.setItem("Animes", data);
     }
   }
 
@@ -548,50 +548,6 @@ const EpisodeLink = styled(Link)`
 
   :hover {
     background-color: #202020;
-  }
-`;
-
-const ServerWrapper = styled.div`
-  p {
-    color: #FFFFFF;
-    font-size: 1.4rem;
-    font-family: "Gilroy-Medium", sans-serif;
-    text-decoration: underline;
-  }
-
-  .server-wrapper {
-    padding: 1rem;
-    background-color: #1A1927;
-    border: 1px solid #272639;
-    border-radius: 0.4rem;
-    box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
-  }
-
-  .serverlinks {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-    grid-gap: 1rem;
-    grid-row-gap: 1rem;
-    justify-content: space-between;
-    margin-top: 1rem;
-  }
-
-  button {
-    cursor: pointer;
-    outline: none;
-    color: #23272A;
-    background-color: #404040;
-    border: 1px solid #808080;
-    padding: 0.7rem 1.5rem;
-    border-radius: 0.4rem;
-    font-family: "Gilroy-Medium", sans-serif;
-    font-size: 0.9rem;
-  }
-
-  @media screen and (max-width: 600px) {
-    p {
-      font-size: 1.2rem;
-    }
   }
 `;
 

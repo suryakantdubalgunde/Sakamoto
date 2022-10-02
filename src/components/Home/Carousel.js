@@ -14,7 +14,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 function Carousel({ images }) {
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   return (
     <div>
@@ -33,7 +33,7 @@ function Carousel({ images }) {
         {images.map(
           (item, index) =>
             item.bannerImage !== null && (
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <Container>
                   {width <= 600 && (
                     <img
@@ -84,7 +84,7 @@ function Carousel({ images }) {
                       {width > 600 && (
                         <IconContext.Provider
                           value={{
-                            size: "1.15rem",
+                            size: "18px",
                             style: {
                               verticalAlign: "middle",
                               marginBottom: "0.1rem",

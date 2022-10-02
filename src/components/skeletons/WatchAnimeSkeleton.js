@@ -5,7 +5,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { FaChevronDown } from "react-icons/fa";
 
 function WatchAnimeSkeleton() {
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   return (
     <div>

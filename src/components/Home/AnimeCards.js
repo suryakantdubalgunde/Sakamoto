@@ -13,16 +13,15 @@ function AnimeCards(props) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    async function getData() {
+      let res = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}api/${props.criteria}?page=1&count=${props.count}`
+      );
+      setLoading(false);
+      setData(res.data.data.Page.media);
+    }
     getData();
-  }, []);
-
-  async function getData() {
-    let res = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}api/${props.criteria}?page=1&count=${props.count}`
-    );
-    setLoading(false);
-    setData(res.data.data.Page.media);
-  }
+  }, [props.count, props.criteria]);
   return (
     <div>
       {loading && <AnimeCardsSkeleton />}
@@ -59,7 +58,7 @@ function AnimeCards(props) {
           className="mySwiper"
         >
           {data.map((item, i) => (
-            <SwiperSlide>
+            <SwiperSlide key={i}>
               <Wrapper>
                 <Link
                   to={
