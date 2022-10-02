@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
-import { FaChevronDown } from "react-icons/fa";
 
 function WatchAnimeSkeleton() {
   const { width } = useWindowDimensions();
