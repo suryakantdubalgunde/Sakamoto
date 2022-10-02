@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
@@ -6,6 +6,10 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 function Dropdown({ setCurrentRange, options, selected }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(selected);
+
+  useEffect(()=>{
+    setSelectedOption(selected);
+  }, [selected])
 
   function changeHandler(option) {
     setIsOpen(!isOpen);
