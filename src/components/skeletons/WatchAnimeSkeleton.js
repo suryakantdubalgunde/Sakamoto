@@ -34,10 +34,21 @@ function WatchAnimeSkeleton() {
           }}
         />
         <EpisodesWrapper>
-          <p>Episodes</p>
+          <div className="header">
+            <p>Episodes</p>
+            <Skeleton
+              height={40}
+              width={150}
+              baseColor={"#808080"}
+              highlightColor={"#404040"}
+              style={{
+                borderRadius: "0.4rem",
+              }}
+            />
+          </div>
           <Episodes>
             {[...Array(20)].map((x, i) => (
-              <div>
+              <div key={i}>
                 <Skeleton
                   width={width <= 600 ? "5rem" : "10rem"}
                   height={width <= 600 ? 55 : 40}
@@ -60,6 +71,7 @@ const Episodes = styled.div`
   grid-gap: 1rem;
   grid-row-gap: 1rem;
   justify-content: space-between;
+  padding: 1rem;
 
   @media screen and (max-width: 600px) {
     grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
@@ -70,14 +82,23 @@ const EpisodesWrapper = styled.div`
   margin-top: 1rem;
   border: 1px solid #272639;
   border-radius: 0.4rem;
-  padding: 1rem;
+
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    width: 100%;
+    border-bottom: 1px solid #404040;
+    padding: 0.6rem 1rem;
+    justify-content: start;
+    align-items: center;
+  }
 
   p {
     font-size: 1.3rem;
     text-decoration: underline;
     color: #FFFFFF;
     font-family: "Gilroy-Medium", sans-serif;
-    margin-bottom: 1rem;
   }
   box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
 `;

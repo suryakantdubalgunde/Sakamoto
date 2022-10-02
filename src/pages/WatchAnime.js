@@ -11,6 +11,7 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import VideoPlayer from "../components/VideoPlayer/VideoPlayer";
 import ServersList from "../components/WatchAnime/ServersList";
 import PlayerContainer from "../components/Wrappers/PlayerContainer";
+import EpisodeLinksList from "../components/EpisodeLinks/EpisodeLinksList";
 
 function WatchAnime() {
   let episodeSlug = useParams().episode;
@@ -34,7 +35,7 @@ function WatchAnime() {
       if (localStorage.getItem("Animes")) {
         let lsData = localStorage.getItem("Animes");
         lsData = JSON.parse(lsData);
-  
+
         let index = lsData.Names.findIndex((i) => i.name === animeName);
         if (index !== -1) {
           lsData.Names.splice(index, 1);
@@ -92,7 +93,6 @@ function WatchAnime() {
     getEpisodeLinks();
   }, [episodeSlug]);
 
-
   function getLocalStorage(animeDetails) {
     animeDetails = animeDetails.substring(0, animeDetails.length - 1);
 
@@ -119,7 +119,6 @@ function WatchAnime() {
       document.exitFullscreen();
     }
   }
-
   return (
     <div>
       {loading && <WatchAnimeSkeleton />}
@@ -392,48 +391,13 @@ function WatchAnime() {
                     setCurrentServer={setCurrentServer}
                   />
                 )}
-                <EpisodesWrapper>
-                  <p>Episodes</p>
-                  {width <= 600 && (
-                    <Episodes>
-                      {episodeLinks[0].episodes.map((item, i) => (
-                        <EpisodeLink
-                          to={"/watch" + item}
-                          style={
-                            parseInt(
-                              episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
-                            ) ===
-                              i + 1 || i < localStorageDetails
-                              ? { backgroundColor: "#FFFFFF", color:"#23272A" }
-                              : {}
-                          }
-                        >
-                          {i + 1}
-                        </EpisodeLink>
-                      ))}
-                    </Episodes>
-                  )}
-                  {width > 600 && (
-                    <Episodes>
-                      {episodeLinks[0].episodes.map((item, i) => (
-                        <EpisodeLink
-                          to={"/watch" + item}
-                          style={
-                            parseInt(
-                              episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
-                            ) ===
-                              i + 1 || i < localStorageDetails
-                              ? { backgroundColor: "#FFFFFF", color:"#23272A"  }
-                              : {}
-                          }
-                        >
-                          Episode {i + 1}
-                        </EpisodeLink>
-                      ))}
-                    </Episodes>
-                  )}
-                </EpisodesWrapper>
               </div>
+              <EpisodeLinksList
+                episodeArray={episodeLinks[0]?.episodes}
+                episodeNum={parseInt(
+                  localStorageDetails
+                )}
+              />
             </div>
           )}
         </Wrapper>
@@ -472,50 +436,6 @@ const IframeWrapper = styled.div`
   @media screen and (max-width: 600px) {
     padding-bottom: 66.3%;
     background-size: 13rem;
-  }
-`;
-
-const EpisodesWrapper = styled.div`
-  margin-top: 1rem;
-  border: 1px solid #272639;
-  border-radius: 0.4rem;
-  padding: 1rem;
-
-  p {
-    font-size: 1.3rem;
-    text-decoration: underline;
-    color: white;
-    font-family: "Gilroy-Medium", sans-serif;
-    margin-bottom: 1rem;
-  }
-  box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
-`;
-
-const Episodes = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  grid-gap: 1rem;
-  grid-row-gap: 1rem;
-  justify-content: space-between;
-
-  @media screen and (max-width: 600px) {
-    grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
-  }
-`;
-
-const EpisodeLink = styled(Link)`
-  text-align: center;
-  color: #FFFFFF;
-  text-decoration: none;
-  background-color: #404040;
-  padding: 0.9rem 2rem;
-  font-family: "Gilroy-Medium", sans-serif;
-  border-radius: 0.4rem;
-  border: 1px solid #23272A;
-  transition: 0.2s;
-
-  :hover {
-    background-color: #202020;
   }
 `;
 
