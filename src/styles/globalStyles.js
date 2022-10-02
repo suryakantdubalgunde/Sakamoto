@@ -13,7 +13,11 @@ const GlobalStyle = createGlobalStyle`
 			-webkit-user-select: none; /* Safari 3.1+ */
 			-moz-user-select: none; /* Firefox 2+ */
 			-ms-user-select: none; /* IE 10+ */
-		  }
+	}
+	body > #root {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
 	}
 
 	::placeholder {
