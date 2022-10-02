@@ -53,6 +53,7 @@ const DropdownButton = styled.button`
   background-color: #404040;
   padding: 0.8rem 2rem;
   font-family: "Gilroy-Medium", sans-serif;
+  font-size: 0.9rem;
   border-radius: 0.4rem;
   transition: 0.2s;
   display: flex;
