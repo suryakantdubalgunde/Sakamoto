@@ -159,6 +159,19 @@ function AnimeDetails() {
   );
 }
 
+async function getAnimeDetails() {
+    setLoading(true);
+    setExpanded(false);
+    window.scrollTo(0, 0);
+    let res = await axios.get(
+      `https://api.miyou.me/api/getanime?link=/category/${slug}`
+    );
+    setLoading(false);
+    setAnimeDetails(res.data);
+    getLocalStorage(res.data);
+    document.title = animeDetails[0].gogoResponse.title
+  }
+
 const Content = styled.div`
   margin: 2rem 5rem 2rem 5rem;
   position: relative;
