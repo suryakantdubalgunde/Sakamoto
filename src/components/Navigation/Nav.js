@@ -8,7 +8,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 function Nav() {
   const [isActive, setIsActive] = useState(false);
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   return (
     <div>
@@ -42,7 +42,7 @@ function Nav() {
         {width > 600 && (
           <IconContext.Provider
             value={{
-              size: "1rem",
+              size: "16px",
               style: {
                 verticalAlign: "middle",
                 marginBottom: "0.2rem",
