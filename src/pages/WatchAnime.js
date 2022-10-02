@@ -431,25 +431,27 @@ function WatchAnime() {
                       selected={currentRange}
                     />
                   </div>
-                    <Episodes>
-                      {rangeFilters[currentRange]?.map((item, i) => (
-                        <EpisodeLink
-                          to={"/watch" + item}
-                          style={
-                            parseInt(
-                              episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
-                            ) ===
-                              currentRangeIndex * 100 + i + 1 ||
-                            currentRangeIndex * 100 + i < localStorageDetails
-                              ? { backgroundColor: "#FFFFFF", color: "#23272A" }
-                              : {}
-                          }
-                        >
-                          {width > 600 && `Episode ${currentRangeIndex * 100 + i + 1}`}
-                          {width <= 600 && currentRangeIndex * 100 + i + 1}
-                        </EpisodeLink>
-                      ))}
-                    </Episodes>
+                  <Episodes>
+                    {rangeFilters[currentRange]?.map((item, i) => (
+                      <EpisodeLink
+                        to={"/watch" + item}
+                        style={
+                          parseInt(
+                            episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
+                          ) ===
+                          currentRangeIndex * 100 + i + 1
+                            ? { backgroundColor: "#FFFFFF", color: "#23272A" }
+                            : currentRangeIndex * 100 + i < localStorageDetails
+                            ? { backgroundColor: "#AFAFAF", color: "#23272A" }
+                            : {}
+                        }
+                      >
+                        {width > 600 &&
+                          `Episode ${currentRangeIndex * 100 + i + 1}`}
+                        {width <= 600 && currentRangeIndex * 100 + i + 1}
+                      </EpisodeLink>
+                    ))}
+                  </Episodes>
                 </EpisodesWrapper>
               </div>
             </div>
