@@ -339,7 +339,7 @@ const Button = styled(Link)`
   border-radius: 0.4rem;
   position: relative;
   top: -25%;
-  #FFFFFF-space: nowrap;
+  white-space: nowrap;
 
   @media screen and (max-width: 600px) {
     display: block;
