@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import { BiArrowToBottom, BiFullscreen } from "react-icons/bi";
@@ -11,7 +11,7 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import VideoPlayer from "../components/VideoPlayer/VideoPlayer";
 import ServersList from "../components/WatchAnime/ServersList";
 import PlayerContainer from "../components/Wrappers/PlayerContainer";
-import Dropdown from "../components/Dropdown/Dropdown";
+import EpisodeLinksList from "../components/EpisodeLinks/EpisodeLinksList";
 
 function WatchAnime() {
   let episodeSlug = useParams().episode;
@@ -23,12 +23,6 @@ function WatchAnime() {
   const [fullScreen, setFullScreen] = useState(false);
   const [internalPlayer, setInternalPlayer] = useState(true);
   const [localStorageDetails, setLocalStorageDetails] = useState(0);
-  const [rangeFilters, setRangeFilters] = useState({});
-  const [currentRange, setCurrentRange] = useState(null);
-  const currentRangeIndex = useMemo(
-    () => Object.keys(rangeFilters).indexOf(currentRange),
-    [currentRange, rangeFilters]
-  );
 
   useEffect(() => {
     function updateLocalStorage(episode, episodeLinks) {
@@ -73,29 +67,6 @@ function WatchAnime() {
       }
     }
 
-    const updateChunks = (array, episode) => {
-      const rangeSize = 100;
-      const buffer = {};
-      for (let i = 0; i < array.length; i += rangeSize) {
-        const rangeValues = array.slice(i, i + rangeSize);
-        let key;
-        if (rangeValues.length === 1) {
-          key = `${(i + rangeValues.length).toString().padStart(3, 0)}`;
-        } else {
-          key = `${(i + 1).toString().padStart(3, 0)} - ${(
-            i + rangeValues.length
-          )
-            .toString()
-            .padStart(3, 0)}`;
-        }
-        buffer[key] = rangeValues;
-      }
-      setRangeFilters(buffer);
-      const episodeNum = episode.replace(/.*?(\d+)[^\d]*$/, "$1");
-      const rangeIndex = Math.floor((episodeNum - 1) / 100);
-      setCurrentRange(Object.keys(buffer)[rangeIndex]);
-    };
-
     async function getEpisodeLinks() {
       setLoading(true);
       window.scrollTo(0, 0);
@@ -111,7 +82,6 @@ function WatchAnime() {
       ) {
         setInternalPlayer(true);
       }
-      updateChunks(res.data[0].episodes, episodeSlug);
       updateLocalStorage(episodeSlug, res.data);
       getLocalStorage(
         res.data[0].titleName.substring(
@@ -149,7 +119,6 @@ function WatchAnime() {
       document.exitFullscreen();
     }
   }
-
   return (
     <div>
       {loading && <WatchAnimeSkeleton />}
@@ -422,39 +391,13 @@ function WatchAnime() {
                     setCurrentServer={setCurrentServer}
                   />
                 )}
-                <EpisodesWrapper>
-                  <div className="header">
-                    <p>Episodes</p>
-                    <Dropdown
-                      setCurrentRange={setCurrentRange}
-                      options={Object.keys(rangeFilters)}
-                      selected={currentRange}
-                    />
-                  </div>
-                  <Episodes>
-                    {rangeFilters[currentRange]?.map((item, i) => (
-                      <EpisodeLink
-                        key={i}
-                        to={"/watch" + item}
-                        style={
-                          parseInt(
-                            episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
-                          ) ===
-                          currentRangeIndex * 100 + i + 1
-                            ? { backgroundColor: "#FFFFFF", color: "#23272A" }
-                            : currentRangeIndex * 100 + i < localStorageDetails
-                            ? { backgroundColor: "#AFAFAF", color: "#23272A" }
-                            : {}
-                        }
-                      >
-                        {width > 600 &&
-                          `Episode ${currentRangeIndex * 100 + i + 1}`}
-                        {width <= 600 && currentRangeIndex * 100 + i + 1}
-                      </EpisodeLink>
-                    ))}
-                  </Episodes>
-                </EpisodesWrapper>
               </div>
+              <EpisodeLinksList
+                episodeArray={episodeLinks[0]?.episodes}
+                episodeNum={parseInt(
+                  episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
+                )}
+              />
             </div>
           )}
         </Wrapper>
@@ -493,62 +436,6 @@ const IframeWrapper = styled.div`
   @media screen and (max-width: 600px) {
     padding-bottom: 66.3%;
     background-size: 13rem;
-  }
-`;
-
-const EpisodesWrapper = styled.div`
-  margin-top: 1rem;
-  border: 1px solid #272639;
-  border-radius: 0.4rem;
-
-  .header {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-    width: 100%;
-    border-bottom: 1px solid #404040;
-    padding: 0.6rem 1rem;
-    justify-content: start;
-    align-items: center;
-  }
-
-  p {
-    font-size: 1.3rem;
-    text-decoration: underline;
-    color: white;
-    font-family: "Gilroy-Medium", sans-serif;
-  }
-  box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
-`;
-
-const Episodes = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  grid-gap: 1rem;
-  grid-row-gap: 1rem;
-  padding: 1rem;
-  justify-content: space-between;
-
-  @media screen and (max-width: 600px) {
-    grid-gap: 0.5rem;
-    grid-row-gap: 0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
-  }
-`;
-
-const EpisodeLink = styled(Link)`
-  text-align: center;
-  color: #FFFFFF;
-  text-decoration: none;
-  background-color: #404040;
-  padding: 0.9rem 0rem;
-  font-family: "Gilroy-Medium", sans-serif;
-  border-radius: 0.4rem;
-  border: 1px solid #23272A;
-  transition: 0.2s;
-
-  :hover {
-    background-color: #202020;
   }
 `;
 
