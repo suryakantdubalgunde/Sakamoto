@@ -33,6 +33,10 @@ const EpisodeLinksList = ({ episodeArray, episodeNum }) => {
         buffer[key] = rangeValues;
       }
       setRangeFilters(buffer);
+      if(episodeNum === 0){
+        setCurrentRange(Object.keys(buffer)[0]);
+        return;
+      }
       const rangeIndex = Math.floor((episodeNum - 1) / 100);
       setCurrentRange(Object.keys(buffer)[rangeIndex]);
     };
