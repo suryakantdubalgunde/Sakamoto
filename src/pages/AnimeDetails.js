@@ -159,26 +159,6 @@ function AnimeDetails() {
   );
 }
 
-const Episode = styled.div`
-  margin: 0 4rem 0 4rem;
-  padding: 2rem;
-  outline: 2px solid #272639;
-  border-radius: 0.5rem;
-  color: #FFFFFF;
-
-  h2 {
-    font-size: 1.4rem;
-    text-decoration: underline;
-    margin-bottom: 1rem;
-  }
-  box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
-
-  @media screen and (max-width: 600px) {
-    padding: 1rem;
-    margin: 1rem;
-  }
-`;
-
 const Content = styled.div`
   margin: 2rem 5rem 2rem 5rem;
   position: relative;

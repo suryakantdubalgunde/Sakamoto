@@ -395,7 +395,7 @@ function WatchAnime() {
               <EpisodeLinksList
                 episodeArray={episodeLinks[0]?.episodes}
                 episodeNum={parseInt(
-                  episodeSlug.replace(/.*?(\d+)[^\d]*$/, "$1")
+                  localStorageDetails
                 )}
               />
             </div>
