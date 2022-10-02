@@ -4,11 +4,18 @@ import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import SearchResultsSkeleton from "../components/skeletons/SearchResultsSkeleton";
 
+const DefaultFilter = {
+  subs:true,
+  dubs:true
+};
+
+
 function SearchResults() {
   let urlParams = useParams().name;
   urlParams = urlParams.replace(":", "").replace("(", "").replace(")", "");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState(DefaultFilter);
 
   useEffect(() => {
     async function getResults() {
@@ -23,6 +30,25 @@ function SearchResults() {
     getResults();
   }, [urlParams]);
 
+  const updateSearchFilter = (ev) => {
+    const otherKey = Object.keys(filter).filter(k => k !== ev.target.value);
+    let otherChecked = filter[otherKey];
+    // check if unchecking both - in this case we'll toggle instead
+    if (!ev.target.checked && !otherChecked) {
+      otherChecked = true;
+    }
+    setFilter({
+      [ev.target.value]:ev.target.checked,
+      [otherKey]:otherChecked
+    });
+  };
+  
+  const filterResults = (item) => {
+    if (filter.dubs && filter.subs) return true;
+    let match = item.title.toLowerCase().endsWith('(dub)');
+    return filter.dubs ? match : !match;
+  }
+
   return (
     <div>
       {loading && <SearchResultsSkeleton />}
@@ -31,8 +57,14 @@ function SearchResults() {
           <Heading>
             <span>Search</span> Results
           </Heading>
+          <CheckboxWrapper>
+            <label htmlFor="dubs">Dubs</label>
+            <input id="dubs" checked={filter.dubs} onChange={updateSearchFilter} type="checkbox" value="dubs" />
+            <label htmlFor="subs">Subs</label>
+            <input id="subs" checked={filter.subs} onChange={updateSearchFilter} type="checkbox" value="subs" />
+          </CheckboxWrapper>
           <CardWrapper>
-            {results.map((item, i) => (
+            {results.filter(filterResults).map((item, i) => (
               <Wrapper to={item.link}>
                 <img src={item.image} alt="" />
                 <p>{item.title}</p>
@@ -55,6 +87,18 @@ const Parent = styled.div`
     margin: 1rem;
   }
 `;
+
+const CheckboxWrapper = styled.div`
+  color: #FFFFFF;
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+  label {
+    padding-right: 0.5rem;
+  }
+  label:not(:first-child) {
+    margin-left: 2rem;
+  }
+`
 
 const CardWrapper = styled.div`
   /* display: flex;
@@ -132,7 +176,6 @@ const Heading = styled.p`
   font-size: 1.8rem;
   color: #FFFFFF;
   font-family: "Gilroy-Light", sans-serif;
-  margin-bottom: 2rem;
   span {
     font-family: "Gilroy-Bold", sans-serif;
   }
