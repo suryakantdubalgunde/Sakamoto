@@ -10,37 +10,23 @@ function AnimeDetails() {
   const [animeDetails, setAnimeDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState(false);
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const [localStorageDetails, setLocalStorageDetails] = useState(0);
 
   useEffect(() => {
+      async function getAnimeDetails() {
+        setLoading(true);
+        setExpanded(false); //let res = await axios.get
+        window.scrollTo(0, 0);
+        let res = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}api/getanime?link=/category/${slug}`
+        );
+        setLoading(false);
+        setAnimeDetails(res.data);
+        getLocalStorage(res.data);
+      }
     getAnimeDetails();
-  }, []);
-
-  async function getAnimeDetails() {
-    setLoading(true);
-    setExpanded(false); //let res = await axios.get
-    window.scrollTo(0, 0);
-    let res = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}api/getanime?link=/category/${slug}`
-    );
-    setLoading(false);
-    setAnimeDetails(res.data);
-    getLocalStorage(res.data);
-  }
-
-  async function getAnimeDetails() {
-    setLoading(true);
-    setExpanded(false);
-    window.scrollTo(0, 0);
-    let res = await axios.get(
-      `https://sakamoto-api.vercel.app/api/getanime?link=/category/${slug}`
-    );
-    setLoading(false);
-    setAnimeDetails(res.data);
-    getLocalStorage(res.data);
-    document.title = res.data[0].gogoResponse.title
-  }
+  }, [slug]);
 
   function readMoreHandler() {
     setExpanded(!expanded);

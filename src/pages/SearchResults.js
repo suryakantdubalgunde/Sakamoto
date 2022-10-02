@@ -11,18 +11,18 @@ function SearchResults() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    async function getResults() {
+      setLoading(true);
+      window.scrollTo(0, 0);
+      let res = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}api/search?name=${urlParams}`
+      );
+      setLoading(false);
+      setResults(res.data);
+    }
     getResults();
   }, [urlParams]);
 
-  async function getResults() {
-    setLoading(true);
-    window.scrollTo(0, 0);
-    let res = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}api/search?name=${urlParams}`
-    );
-    setLoading(false);
-    setResults(res.data);
-  }
   return (
     <div>
       {loading && <SearchResultsSkeleton />}

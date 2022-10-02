@@ -205,7 +205,7 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
         ],
       };
     }
-  }, []);
+  }, [src, title]);
 
   return (
     <div

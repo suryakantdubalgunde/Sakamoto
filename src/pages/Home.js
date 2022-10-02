@@ -12,7 +12,7 @@ function Home() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [change, setChange] = useState(false);
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     getImages();
