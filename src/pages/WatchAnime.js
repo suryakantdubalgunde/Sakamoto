@@ -41,7 +41,7 @@ function WatchAnime() {
       if (localStorage.getItem("Animes")) {
         let lsData = localStorage.getItem("Animes");
         lsData = JSON.parse(lsData);
-  
+
         let index = lsData.Names.findIndex((i) => i.name === animeName);
         if (index !== -1) {
           lsData.Names.splice(index, 1);
@@ -434,6 +434,7 @@ function WatchAnime() {
                   <Episodes>
                     {rangeFilters[currentRange]?.map((item, i) => (
                       <EpisodeLink
+                        key={i}
                         to={"/watch" + item}
                         style={
                           parseInt(

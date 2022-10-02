@@ -48,7 +48,7 @@ function WatchAnimeSkeleton() {
           </div>
           <Episodes>
             {[...Array(20)].map((x, i) => (
-              <div>
+              <div key={i}>
                 <Skeleton
                   width={width <= 600 ? "5rem" : "10rem"}
                   height={width <= 600 ? 55 : 40}
