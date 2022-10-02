@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
+import EpisodeLinksList from "../components/EpisodeLinks/EpisodeLinksList";
 import AnimeDetailsSkeleton from "../components/skeletons/AnimeDetailsSkeleton";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
@@ -14,17 +15,17 @@ function AnimeDetails() {
   const [localStorageDetails, setLocalStorageDetails] = useState(0);
 
   useEffect(() => {
-      async function getAnimeDetails() {
-        setLoading(true);
-        setExpanded(false); //let res = await axios.get
-        window.scrollTo(0, 0);
-        let res = await axios.get(
-          `${process.env.REACT_APP_BACKEND_URL}api/getanime?link=/category/${slug}`
-        );
-        setLoading(false);
-        setAnimeDetails(res.data);
-        getLocalStorage(res.data);
-      }
+    async function getAnimeDetails() {
+      setLoading(true);
+      setExpanded(false); //let res = await axios.get
+      window.scrollTo(0, 0);
+      let res = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}api/getanime?link=/category/${slug}`
+      );
+      setLoading(false);
+      setAnimeDetails(res.data);
+      getLocalStorage(res.data);
+    }
     getAnimeDetails();
   }, [slug]);
 
@@ -146,41 +147,10 @@ function AnimeDetails() {
                   </p>
                 </div>
               </ContentWrapper>
-              <Episode>
-                <h2>Episodes</h2>
-                {width <= 600 && (
-                  <Episodes>
-                    {animeDetails[0].gogoResponse.episodes.map((item, i) => (
-                      <EpisodeLink
-                        style={
-                          i < localStorageDetails - 1
-                            ? { backgroundColor: "#FFFFFF" }
-                            : {}
-                        }
-                        to={"/watch" + item}
-                      >
-                        {i + 1}
-                      </EpisodeLink>
-                    ))}
-                  </Episodes>
-                )}
-                {width > 600 && (
-                  <Episodes>
-                    {animeDetails[0].gogoResponse.episodes.map((item, i) => (
-                      <EpisodeLink
-                        style={
-                          i < localStorageDetails - 1
-                            ? { backgroundColor: "#FFFFFF" }
-                            : {}
-                        }
-                        to={"/watch" + item}
-                      >
-                        Episode {i + 1}
-                      </EpisodeLink>
-                    ))}
-                  </Episodes>
-                )}
-              </Episode>
+              <EpisodeLinksList
+                episodeArray={animeDetails[0].gogoResponse.episodes}
+                episodeNum={parseInt(localStorageDetails)}
+              />
             </div>
           )}
         </Content>
@@ -206,40 +176,6 @@ const Episode = styled.div`
   @media screen and (max-width: 600px) {
     padding: 1rem;
     margin: 1rem;
-  }
-`;
-
-const Episodes = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  grid-gap: 1rem;
-  grid-row-gap: 1rem;
-  justify-content: space-between;
-
-  @media screen and (max-width: 600px) {
-    grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
-  }
-`;
-
-const EpisodeLink = styled(Link)`
-  text-align: center;
-  color: #23272A;
-  text-decoration: none;
-  background-color: #404040;
-  padding: 0.9rem 2rem;
-  font-family: "Gilroy-Medium", sans-serif;
-  border-radius: 0.5rem;
-  border: 1px solid #808080;
-  transition: 0.2s;
-
-  :hover {
-    background-color: #FFFFFF;
-  }
-
-  @media screen and (max-width: 600px) {
-    padding: 1rem;
-    border-radius: 0.3rem;
-    font-family: "Gilroy-Bold", sans-serif;
   }
 `;
 
@@ -317,7 +253,7 @@ const Poster = styled.div`
     height: 300px;
     border-radius: 0.5rem;
     margin-bottom: 2rem;
-    position: relative; 
+    position: relative;
     top: -20%;
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
   }
