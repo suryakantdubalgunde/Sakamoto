@@ -29,13 +29,13 @@ let searchAnimeQuery = `
 	}
 `;
 
-function WatchingEpisodes({ change, setChange }) {
+function WatchingEpisodes() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getData();
-  }, [change]);
+  }, []);
 
   async function getData() {
     setLoading(true);
@@ -90,8 +90,11 @@ function WatchingEpisodes({ change, setChange }) {
     lsData.Names.splice(index, 1);
     lsData = JSON.stringify(lsData);
     localStorage.setItem("Animes", lsData);
-    data.splice(index, 1);
-    setChange(!change);
+    // data.splice(index, 1);
+    setData(data => [
+      ...data.slice(0, index),
+      ...data.slice(index + 1),
+    ]);
   }
 
   return (
