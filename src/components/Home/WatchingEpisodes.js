@@ -201,6 +201,7 @@ const ConfirmRemove = styled.div`
 const Wrapper = styled.div`
   position: relative;
   button {
+    font-family: 'Gilroy-Regular', sans-serif;
     cursor: pointer;
     outline: none;
     border: none;
@@ -208,9 +209,6 @@ const Wrapper = styled.div`
     padding: 0.5rem;
     border-radius: 0.2rem;
     background-color: rgba(0, 0, 0, 0.7);
-    &+button {
-      margin-left: 0.5rem;
-    }
   }
   .removeButton {
     border-top-left-radius: 0.5rem;
