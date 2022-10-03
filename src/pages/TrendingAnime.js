@@ -23,7 +23,7 @@ function TrendingAnime() {
     <div>
       {loading && <SearchResultsSkeleton name="Trending Anime" />}
       {!loading && (
-        <AnimeGrid animeDetails={animeDetails} title="Top 100 Anime" />
+        <AnimeGrid animeDetails={animeDetails} title="Trending Anime" />
       )}
     </div>
   );
