@@ -152,7 +152,7 @@ function WatchingEpisodes() {
           className="mySwiper"
         >
           {data.map((item, i) => (
-            <SwiperSlide>
+            <SwiperSlide key={i}>
               <Wrapper>
                 <IconContext.Provider
                   value={{
