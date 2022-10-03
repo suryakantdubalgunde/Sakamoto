@@ -105,7 +105,8 @@ const GlobalStyle = createGlobalStyle`
 	.pageNotFound{
 		display:flex;
 		flex-direction:row;
-		margin-left: 25%;
+		margin-left:auto;
+		margin-right:auto;
 		align-conetnt:center;
 	}
 	.errorMessage
