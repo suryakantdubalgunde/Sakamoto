@@ -10,6 +10,7 @@ import Top100Anime from "./pages/Top100Anime";
 import TrendingAnime from "./pages/TrendingAnime";
 import WatchAnime from "./pages/WatchAnime";
 import GlobalStyle from "./styles/globalStyles";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/search/:name" element={<SearchResults />} />
         <Route path="/category/:slug" element={<AnimeDetails />} />
         <Route path="/watch/:episode" element={<WatchAnime />} />
+        <Route path="*" element={<PageNotFound />}/>
       </Routes>
       <Footer />
     </Router>

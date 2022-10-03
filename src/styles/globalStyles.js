@@ -102,6 +102,39 @@ const GlobalStyle = createGlobalStyle`
 		background-color: rgba(0, 0, 0, 0.6);
 		color: #FFFFFF;
 	}
+	.pageNotFound{
+		display:flex;
+		flex-direction:row;
+		margin-left: 25%;
+		align-conetnt:center;
+	}
+	.errorMessage
+	{
+		display:flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-content: center;
+
+	}
+
+	.err
+	{
+		font-size:100px;
+		color: white;
+
+
+	}
+
+	.num
+	{
+		font-size:160px; 
+		letter-spacing:10px;
+		color: white;
+	}
+
+	.errorMessage h1{
+		color: grey;
+	}
 `;
 
 export default GlobalStyle;
