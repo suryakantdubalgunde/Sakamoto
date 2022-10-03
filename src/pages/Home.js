@@ -11,7 +11,6 @@ import WatchingEpisodes from "../components/Home/WatchingEpisodes";
 function Home() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [change, setChange] = useState(false);
   const { width } = useWindowDimensions();
 
   useEffect(() => {
@@ -50,7 +49,7 @@ function Home() {
                 <span>Continue</span> Watching
               </Heading>
             </HeadingWrapper>
-            <WatchingEpisodes change={change} setChange={setChange} />
+            <WatchingEpisodes />
           </div>
         )}
         <div>
