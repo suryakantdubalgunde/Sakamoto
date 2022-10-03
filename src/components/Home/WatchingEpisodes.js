@@ -95,7 +95,6 @@ function WatchingEpisodes() {
       lsData.Names.splice(index, 1);
       lsData = JSON.stringify(lsData);
       localStorage.setItem("Animes", lsData);
-      // data.splice(index, 1);
       setData((data) => [...data.slice(0, index), ...data.slice(index + 1)]);
       setConfirmRemove([...confirmRemove.slice(0, index), ...confirmRemove.slice(index + 1)]);
     } else {
