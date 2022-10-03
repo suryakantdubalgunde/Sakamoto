@@ -39,8 +39,9 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
       ],
     };
 
+    let hls;
     if (Hls.isSupported()) {
-      const hls = new Hls();
+      hls = new Hls();
       hls.loadSource(src);
       hls.attachMedia(video);
 
@@ -205,6 +206,10 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
         ],
       };
     }
+    return () => {
+      hls.stopLoad();
+      hls.destroy();
+    };
   }, [src, title]);
 
   return (
@@ -246,6 +251,5 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
     </div>
   );
 }
-
 
 export default VideoPlayer;
