@@ -29,13 +29,14 @@ let searchAnimeQuery = `
 	}
 `;
 
-function WatchingEpisodes({ change, setChange }) {
+function WatchingEpisodes() {
   const [data, setData] = useState([]);
+  const [confirmRemove, setConfirmRemove] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getData();
-  }, [change]);
+  }, []);
 
   async function getData() {
     setLoading(true);
@@ -81,17 +82,38 @@ function WatchingEpisodes({ change, setChange }) {
       });
     }
     setData(apiRes);
+    setConfirmRemove(apiRes.map(() => false));
     setLoading(false);
   }
 
-  function removeAnime(index) {
-    let lsData = localStorage.getItem("Animes");
-    lsData = JSON.parse(lsData);
-    lsData.Names.splice(index, 1);
-    lsData = JSON.stringify(lsData);
-    localStorage.setItem("Animes", lsData);
-    data.splice(index, 1);
-    setChange(!change);
+  function removeAnime(ev) {
+    if (!confirmRemove.length) return;
+    const index = parseInt(ev.currentTarget.dataset.index);
+    if (confirmRemove[index]) {
+      let lsData = localStorage.getItem("Animes");
+      lsData = JSON.parse(lsData);
+      lsData.Names.splice(index, 1);
+      lsData = JSON.stringify(lsData);
+      localStorage.setItem("Animes", lsData);
+      setData((data) => [...data.slice(0, index), ...data.slice(index + 1)]);
+      setConfirmRemove([...confirmRemove.slice(0, index), ...confirmRemove.slice(index + 1)]);
+    } else {
+      setConfirmRemove([
+        ...confirmRemove.slice(0, index),
+        true,
+        ...confirmRemove.slice(index + 1),
+      ]);
+    }
+  }
+
+  function cancelRemoveAnime(ev) {
+    if (!confirmRemove.length) return;
+    const index = parseInt(ev.currentTarget.dataset.index);
+    setConfirmRemove([
+      ...confirmRemove.slice(0, index),
+      false,
+      ...confirmRemove.slice(index + 1),
+    ]);
   }
 
   return (
@@ -141,14 +163,18 @@ function WatchingEpisodes({ change, setChange }) {
                     },
                   }}
                 >
-                  <button
-                    className="closeButton"
-                    onClick={() => {
-                      removeAnime(i);
-                    }}
-                  >
-                    <IoClose />
-                  </button>
+                  <ConfirmRemove>
+                      <button
+                        className={"removeButton"+(confirmRemove[i]?" confirm":"")}
+                        data-index={i}
+                        onClick={removeAnime}
+                      >
+                        {confirmRemove[i] ? <span>Remove</span> : <IoClose />}
+                      </button>
+                      {confirmRemove[i] && <button data-index={i} onClick={cancelRemoveAnime}>
+                        Cancel
+                      </button>}
+                  </ConfirmRemove>
                 </IconContext.Provider>
 
                 <Link to={"watch/" + item.link}>
@@ -156,7 +182,7 @@ function WatchingEpisodes({ change, setChange }) {
                 </Link>
                 <p>{item.name}</p>
                 <p className="episodeNumber">
-                  {"Episode - " + item.episodeNum}
+                  {`Episode ${item.episodeNum}`}
                 </p>
               </Wrapper>
             </SwiperSlide>
@@ -167,17 +193,28 @@ function WatchingEpisodes({ change, setChange }) {
   );
 }
 
+const ConfirmRemove = styled.div`
+  position: absolute;
+  top: 0;
+`;
+
 const Wrapper = styled.div`
   position: relative;
-
-  .closeButton {
-    position: absolute;
+  button {
+    font-family: 'Gilroy-Regular', sans-serif;
     cursor: pointer;
     outline: none;
     border: none;
+    color: #fff;
     padding: 0.5rem;
+    border-radius: 0.2rem;
     background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 0.5rem 0 0.2rem 0;
+  }
+  .removeButton {
+    border-top-left-radius: 0.5rem;
+    &.confirm {
+      background-color: rgba(150, 0, 0, 0.7);
+    }
   }
   img {
     width: 160px;
@@ -196,7 +233,7 @@ const Wrapper = styled.div`
   }
 
   p {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 1rem;
     font-family: "Gilroy-Medium", sans-serif;
     @media screen and (max-width: 600px) {
@@ -209,7 +246,8 @@ const Wrapper = styled.div`
 
   .episodeNumber {
     font-family: "Gilroy-Regular", sans-serif;
-    color: #23272A;
+    color: #969696;
+    font-size: 0.8em;
   }
 `;
 
