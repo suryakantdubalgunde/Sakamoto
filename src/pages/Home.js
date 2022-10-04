@@ -11,6 +11,7 @@ import WatchingEpisodes from "../components/Home/WatchingEpisodes";
 function Home() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [confirmRemove, setConfirmRemove] = useState([]);
   const { width } = useWindowDimensions();
 
   useEffect(() => {
@@ -49,7 +50,7 @@ function Home() {
                 <span>Continue</span> Watching
               </Heading>
             </HeadingWrapper>
-            <WatchingEpisodes />
+            <WatchingEpisodes confirmRemove={confirmRemove} setConfirmRemove={setConfirmRemove} />
           </div>
         )}
         <div>
