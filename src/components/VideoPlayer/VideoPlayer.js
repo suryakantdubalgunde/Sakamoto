@@ -247,7 +247,7 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
           </div>
         </IconContext.Provider>
       </PlayerContainer>
-      <video id="player" playsInline crossorigin="anonymous"></video>
+      <video id="player" playsInline crossOrigin="anonymous"></video>
     </div>
   );
 }
