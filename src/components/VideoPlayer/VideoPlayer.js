@@ -55,8 +55,6 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
           onChange: (e) => updateQuality(e),
         };
         hls.on(Hls.Events.LEVEL_SWITCHED, function (event, data) {
-          console.log('videoRef',videoRef)
-
           if (hls.autoLevelEnabled) {
             videoRef.current.plyr.elements.settings.popup.innerText = `Auto (${hls.levels[data.level].height}p)`;
           } else {
