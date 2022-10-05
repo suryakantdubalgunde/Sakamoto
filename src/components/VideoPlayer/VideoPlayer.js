@@ -55,35 +55,26 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
           onChange: (e) => updateQuality(e),
         };
         hls.on(Hls.Events.LEVEL_SWITCHED, function (event, data) {
-          var span = document.querySelector(
-            ".plyr__menu__container [data-plyr='quality'][value='0'] span"
-          );
+          console.log('videoRef',videoRef)
+
           if (hls.autoLevelEnabled) {
-            span.innerHTML = `Auto (${hls.levels[data.level].height}p)`;
+            videoRef.current.plyr.elements.settings.popup.innerText = `Auto (${hls.levels[data.level].height}p)`;
           } else {
-            span.innerHTML = `Auto`;
+            videoRef.current.plyr.elements.settings.popup.innerText.innerHTML = `Auto`;
           }
         });
         let player = new plyr(videoRef.current, defaultOptions);
         setPlayer(new plyr(videoRef.current, defaultOptions));
-        let plyer;
-        var button = document.createElement("button");
-        button.classList.add("skip-button");
-        button.innerHTML = "Skip Intro";
-        button.addEventListener("click", function () {
-          player.forward(85);
-        });
-        player.on("ready", () => {
-          plyer = document.querySelector(".plyr__controls");
-        });
+        const plyer = videoRef.current.plyr.elements.controls;
+        const button = <button className="skip-button" onClick={() => player.forward(85)}>Skip Intro</button>
 
         player.on("enterfullscreen", (event) => {
-          plyer.appendChild(button);
+          plyer.children.push(button);
           window.screen.orientation.lock("landscape");
         });
 
         player.on("exitfullscreen", (event) => {
-          document.querySelector(".skip-button").remove();
+          plyr.children.filter((child) => child.className !== "skip-button");
           window.screen.orientation.lock("portrait");
         });
 
@@ -148,24 +139,16 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
       };
       let player = new plyr(videoRef.current, defaultOptions);
       setPlayer(new plyr(videoRef.current, defaultOptions));
-      let plyer;
-      var button = document.createElement("button");
-      button.classList.add("skip-button");
-      button.innerHTML = "Skip Intro";
-      button.addEventListener("click", function () {
-        player.forward(85);
-      });
-      player.on("ready", () => {
-        plyer = document.querySelector(".plyr__controls");
-      });
+      const plyer = videoRef.current.plyr.elements.controls;
+      const button = <button className="skip-button" onClick={() => player.forward(85)}>Skip Intro</button>
 
       player.on("enterfullscreen", (event) => {
-        plyer.appendChild(button);
+        plyer.children.push(button);
         window.screen.orientation.lock("landscape");
       });
 
       player.on("exitfullscreen", (event) => {
-        document.querySelector(".skip-button").remove();
+        plyr.children.filter((child) => child.className !== "skip-button");
         window.screen.orientation.lock("portrait");
       });
 
