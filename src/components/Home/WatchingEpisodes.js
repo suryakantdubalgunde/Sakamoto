@@ -29,9 +29,8 @@ let searchAnimeQuery = `
 	}
 `;
 
-function WatchingEpisodes() {
+function WatchingEpisodes({ confirmRemove, setConfirmRemove }) {
   const [data, setData] = useState([]);
-  const [confirmRemove, setConfirmRemove] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
 	/* Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #4f4f4f #141414;
+    scrollbar-color: #4F4F4F #141414;
   }
 
   /* Chrome, Edge, and Safari */
@@ -41,9 +41,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #4f4f4f;
+    background-color: #4F4F4F;
     border-radius: 10px;
-    border: 0px none #ffffff;
+    border: 0px none #FFFFFF;
   }
 
 	.swiper-pagination-bullet-active {
@@ -101,40 +101,6 @@ const GlobalStyle = createGlobalStyle`
 		cursor: pointer;
 		background-color: rgba(0, 0, 0, 0.6);
 		color: #FFFFFF;
-	}
-	.pageNotFound{
-		display:flex;
-		flex-direction:row;
-		margin-left:auto;
-		margin-right:auto;
-		align-conetnt:center;
-	}
-	.errorMessage
-	{
-		display:flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-content: center;
-
-	}
-
-	.err
-	{
-		font-size:100px;
-		color: white;
-
-
-	}
-
-	.num
-	{
-		font-size:160px; 
-		letter-spacing:10px;
-		color: white;
-	}
-
-	.errorMessage h1{
-		color: grey;
 	}
 `;
 
