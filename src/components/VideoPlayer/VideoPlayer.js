@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { HiOutlineSwitchHorizontal } from "react-icons/hi";
 import { BsSkipEnd } from "react-icons/bs";
 import { IconContext } from "react-icons";
@@ -13,13 +13,13 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
     src = sources.sources_bk[0].file;
   }
   const [player, setPlayer] = useState(null);
+  const videoRef = useRef();
 
   function skipIntro() {
     player.forward(85);
   }
 
   useEffect(() => {
-    const video = document.getElementById("player");
     let flag = true;
 
     const defaultOptions = {
@@ -43,7 +43,7 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
     if (Hls.isSupported()) {
       hls = new Hls();
       hls.loadSource(src);
-      hls.attachMedia(video);
+      hls.attachMedia(videoRef.current);
 
       hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
         const availableQualities = hls.levels.map((l) => l.height);
@@ -64,8 +64,8 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
             span.innerHTML = `Auto`;
           }
         });
-        let player = new plyr(video, defaultOptions);
-        setPlayer(new plyr(video, defaultOptions));
+        let player = new plyr(videoRef.current, defaultOptions);
+        setPlayer(new plyr(videoRef.current, defaultOptions));
         let plyer;
         var button = document.createElement("button");
         button.classList.add("skip-button");
@@ -112,7 +112,7 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
           localStorage.setItem(title, Math.round(player.currentTime));
         });
       });
-      hls.attachMedia(video);
+      hls.attachMedia(videoRef.current);
       window.hls = hls;
 
       function updateQuality(newQuality) {
@@ -128,8 +128,8 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
           });
         }
       }
-    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      video.src = src;
+    } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
+      videoRef.current.src = src;
       const defaultOptions = {
         captions: { active: true, update: true, language: "en" },
         controls: [
@@ -146,8 +146,8 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
           "fullscreen",
         ],
       };
-      let player = new plyr(video, defaultOptions);
-      setPlayer(new plyr(video, defaultOptions));
+      let player = new plyr(videoRef.current, defaultOptions);
+      setPlayer(new plyr(videoRef.current, defaultOptions));
       let plyer;
       var button = document.createElement("button");
       button.classList.add("skip-button");
@@ -247,7 +247,7 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
           </div>
         </IconContext.Provider>
       </PlayerContainer>
-      <video id="player" playsInline crossOrigin="anonymous"></video>
+      <video id="player" ref={videoRef} playsInline crossOrigin="anonymous"></video>
     </div>
   );
 }
